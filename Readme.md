@@ -1,7 +1,7 @@
 # Личный проект «Пиксель хантер» [![Build status][travis-image]][travis-url]
 
 * Студент: [Vitalii Iashchuk](https://up.htmlacademy.ru/ecmascript/7/user/93555).
-* Наставник: `Неизвестно`.
+* Наставник: [Игорь Антонов](https://up.htmlacademy.ru/ecmascript/7/user/3162).
 
 ---
 
