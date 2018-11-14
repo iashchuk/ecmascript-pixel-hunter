@@ -2,6 +2,8 @@
 
 (() => {
 
+  const RIGHT_ARROW = 39;
+  const LEFT_ARROW = 37;
   const FIRST_SCREEN = 0;
   const ARROWS_BUTTONS =
   `<style>
@@ -55,11 +57,22 @@
     showSlide(currentSlide + 1);
   };
 
+  const onArrowKeyDown = (evt) => {
+    switch (evt.keyCode) {
+      case RIGHT_ARROW:
+        showSlide(currentSlide + 1);
+        break;
+      case LEFT_ARROW:
+        showSlide(currentSlide - 1);
+        break;
+    }
+  };
 
   const addNavigationListeners = () => {
     const arrowButtons = document.querySelectorAll(`.arrows__btn`);
     arrowButtons[0].addEventListener(`click`, onPreviousSlideClick);
     arrowButtons[1].addEventListener(`click`, onNextSlideClick);
+    document.addEventListener(`keydown`, onArrowKeyDown);
   };
 
   createSliderButtons();
