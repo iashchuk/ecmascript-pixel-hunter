@@ -69,9 +69,9 @@
   };
 
   const addNavigationListeners = () => {
-    const arrowButtons = document.querySelectorAll(`.arrows__btn`);
-    arrowButtons[0].addEventListener(`click`, onPreviousSlideClick);
-    arrowButtons[1].addEventListener(`click`, onNextSlideClick);
+    const [leftArrow, rightArrow] = document.querySelectorAll(`.arrows__btn`);
+    leftArrow.addEventListener(`click`, onPreviousSlideClick);
+    rightArrow.addEventListener(`click`, onNextSlideClick);
     document.addEventListener(`keydown`, onArrowKeyDown);
   };
 
