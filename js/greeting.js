@@ -1,4 +1,4 @@
-import getElementFromTemplate from './getElementFromTemplate.js';
+import {getElementFromTemplate} from './services.js';
 
 const TEMPLATE = `
   <section class="greeting central--blur">
@@ -24,5 +24,6 @@ const TEMPLATE = `
 `;
 
 const greeting = getElementFromTemplate(TEMPLATE);
+
 
 export default greeting;

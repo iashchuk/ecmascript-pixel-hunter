@@ -1,4 +1,5 @@
-import getElementFromTemplate from './getElementFromTemplate.js';
+import {getElementFromTemplate, changeScreen} from './services.js';
+import greeting from './greeting.js';
 
 const TEMPLATE = `
   <section class="intro">
@@ -8,5 +9,12 @@ const TEMPLATE = `
 `;
 
 const intro = getElementFromTemplate(TEMPLATE);
+
+const asteriskButton = intro.querySelector(`.intro__asterisk`);
+
+asteriskButton.addEventListener(`click`, () => {
+  changeScreen(greeting);
+});
+
 
 export default intro;

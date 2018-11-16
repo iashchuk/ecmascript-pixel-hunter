@@ -1,4 +1,4 @@
-import getElementFromTemplate from './getElementFromTemplate.js';
+import {getElementFromTemplate} from './services.js';
 
 const TEMPLATE = `
  <header class="header">
