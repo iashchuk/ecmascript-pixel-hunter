@@ -1,4 +1,5 @@
-import {getElementFromTemplate} from './services.js';
+import {getElementFromTemplate, changeScreen} from './services';
+import stats from './stats';
 
 const TEMPLATE = `
   <header class="header">
@@ -47,5 +48,13 @@ const TEMPLATE = `
 `;
 
 const gameThree = getElementFromTemplate(TEMPLATE);
+const gameContent = gameThree.querySelector(`.game__content`);
+
+gameContent.addEventListener(`click`, (evt) => {
+  if (evt.target.tagName === `img`) {
+    changeScreen(stats);
+  }
+});
+
 
 export default gameThree;
