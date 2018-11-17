@@ -1,4 +1,5 @@
 import {getElementFromTemplate, changeScreen} from './services';
+import backToGreeting from './back';
 import gameOne from './game-1';
 
 
@@ -36,6 +37,8 @@ const rules = getElementFromTemplate(TEMPLATE);
 
 const rulesInput = rules.querySelector(`.rules__input`);
 const rulesButton = rules.querySelector(`.rules__button`);
+const back = rules.querySelector(`.back`);
+
 
 rulesInput.addEventListener(`input`, () => {
   rulesButton.disabled = !rulesInput.value;
@@ -44,6 +47,8 @@ rulesInput.addEventListener(`input`, () => {
 rulesButton.addEventListener(`click`, () => {
   changeScreen(gameOne);
 });
+
+backToGreeting(back);
 
 
 export default rules;

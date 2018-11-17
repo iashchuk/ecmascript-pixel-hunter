@@ -1,4 +1,5 @@
 import {getElementFromTemplate, changeScreen} from './services';
+import backToGreeting from './back';
 import gameTwo from './game-2';
 
 const TEMPLATE = `
@@ -61,8 +62,8 @@ const TEMPLATE = `
 `;
 
 const gameOne = getElementFromTemplate(TEMPLATE);
-
 const gameContent = gameOne.querySelector(`.game__content`);
+const back = gameOne.querySelector(`.back`);
 
 gameContent.addEventListener(`input`, () => {
   const answers = gameOne.querySelectorAll(`input[type=radio]:checked`);
@@ -70,6 +71,8 @@ gameContent.addEventListener(`input`, () => {
     changeScreen(gameTwo);
   }
 });
+
+backToGreeting(back);
 
 
 export default gameOne;

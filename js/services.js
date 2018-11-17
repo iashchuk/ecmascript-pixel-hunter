@@ -13,5 +13,4 @@ const getElementFromTemplate = (template) => {
   return wrapperElement;
 };
 
-
 export {changeScreen, getElementFromTemplate};

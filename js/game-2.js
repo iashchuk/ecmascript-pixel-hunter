@@ -1,4 +1,5 @@
 import {getElementFromTemplate, changeScreen} from './services';
+import backToGreeting from './back';
 import gameThree from './game-3';
 
 const TEMPLATE = `
@@ -50,12 +51,14 @@ const TEMPLATE = `
 `;
 
 const gameTwo = getElementFromTemplate(TEMPLATE);
-
 const gameContent = gameTwo.querySelector(`.game__content`);
+const back = gameTwo.querySelector(`.back`);
 
 gameContent.addEventListener(`input`, () => {
   changeScreen(gameThree);
 });
+
+backToGreeting(back);
 
 
 export default gameTwo;

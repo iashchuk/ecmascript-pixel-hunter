@@ -1,4 +1,5 @@
-import {getElementFromTemplate} from './services.js';
+import {getElementFromTemplate} from './services';
+import backToGreeting from './back';
 
 const TEMPLATE = `
  <header class="header">
@@ -115,5 +116,8 @@ const TEMPLATE = `
 `;
 
 const stats = getElementFromTemplate(TEMPLATE);
+const back = stats.querySelector(`.back`);
+
+backToGreeting(back);
 
 export default stats;

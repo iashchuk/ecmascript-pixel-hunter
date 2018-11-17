@@ -1,4 +1,5 @@
 import {getElementFromTemplate, changeScreen} from './services';
+import backToGreeting from './back';
 import stats from './stats';
 
 const TEMPLATE = `
@@ -49,12 +50,15 @@ const TEMPLATE = `
 
 const gameThree = getElementFromTemplate(TEMPLATE);
 const gameContent = gameThree.querySelector(`.game__content`);
+const back = gameThree.querySelector(`.back`);
 
 gameContent.addEventListener(`click`, (evt) => {
-  if (evt.target.tagName === `img`) {
+  if (evt.target.tagName === `IMG`) {
     changeScreen(stats);
   }
 });
+
+backToGreeting(back);
 
 
 export default gameThree;
