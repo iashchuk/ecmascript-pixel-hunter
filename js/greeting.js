@@ -1,4 +1,5 @@
-import {getElementFromTemplate} from './services.js';
+import {getElementFromTemplate, changeScreen} from './services';
+import rules from './rules';
 
 const TEMPLATE = `
   <section class="greeting central--blur">
@@ -25,5 +26,10 @@ const TEMPLATE = `
 
 const greeting = getElementFromTemplate(TEMPLATE);
 
+const greetingContinue = greeting.querySelector(`.greeting__continue`);
+
+greetingContinue.addEventListener(`click`, () => {
+  changeScreen(rules);
+});
 
 export default greeting;
