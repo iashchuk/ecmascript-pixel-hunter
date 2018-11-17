@@ -1,4 +1,6 @@
-import {getElementFromTemplate} from './services.js';
+import {getElementFromTemplate, changeScreen} from './services';
+import gameOne from './game-1';
+
 
 const TEMPLATE = `
   <header class="header">
@@ -31,5 +33,17 @@ const TEMPLATE = `
 `;
 
 const rules = getElementFromTemplate(TEMPLATE);
+
+const rulesInput = rules.querySelector(`.rules__input`);
+const rulesButton = rules.querySelector(`.rules__button`);
+
+rulesInput.addEventListener(`input`, () => {
+  rulesButton.disabled = !rulesInput.value;
+});
+
+rulesButton.addEventListener(`click`, () => {
+  changeScreen(gameOne);
+});
+
 
 export default rules;
