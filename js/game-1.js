@@ -1,4 +1,5 @@
-import {getElementFromTemplate} from './services.js';
+import {getElementFromTemplate, changeScreen} from './services';
+import gameTwo from './game-2';
 
 const TEMPLATE = `
   <header class="header">
@@ -60,5 +61,15 @@ const TEMPLATE = `
 `;
 
 const gameOne = getElementFromTemplate(TEMPLATE);
+
+const gameContent = gameOne.querySelector(`.game__content`);
+
+gameContent.addEventListener(`input`, () => {
+  const answers = gameOne.querySelectorAll(`input[type=radio]:checked`);
+  if (answers.length === 2) {
+    changeScreen(gameTwo);
+  }
+});
+
 
 export default gameOne;
