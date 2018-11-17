@@ -1,4 +1,5 @@
-import {getElementFromTemplate} from './services.js';
+import {getElementFromTemplate, changeScreen} from './services';
+import gameThree from './game-3';
 
 const TEMPLATE = `
   <header class="header">
@@ -49,5 +50,12 @@ const TEMPLATE = `
 `;
 
 const gameTwo = getElementFromTemplate(TEMPLATE);
+
+const gameContent = gameTwo.querySelector(`.game__content`);
+
+gameContent.addEventListener(`input`, () => {
+  changeScreen(gameThree);
+});
+
 
 export default gameTwo;
