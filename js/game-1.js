@@ -65,13 +65,14 @@ const gameOne = getElementFromTemplate(TEMPLATE);
 const gameContent = gameOne.querySelector(`.game__content`);
 const back = gameOne.querySelector(`.back`);
 
-gameContent.addEventListener(`input`, () => {
+const answersHandler = () => {
   const answers = gameOne.querySelectorAll(`input[type=radio]:checked`);
   if (answers.length === 2) {
     changeScreen(gameTwo);
   }
-});
+};
 
+gameContent.addEventListener(`input`, answersHandler);
 backToGreeting(back);
 
 

@@ -52,12 +52,13 @@ const gameThree = getElementFromTemplate(TEMPLATE);
 const gameContent = gameThree.querySelector(`.game__content`);
 const back = gameThree.querySelector(`.back`);
 
-gameContent.addEventListener(`click`, (evt) => {
+const answerHandler = (evt) => {
   if (evt.target.tagName === `IMG`) {
     changeScreen(stats);
   }
-});
+};
 
+gameContent.addEventListener(`click`, answerHandler);
 backToGreeting(back);
 
 

@@ -54,10 +54,11 @@ const gameTwo = getElementFromTemplate(TEMPLATE);
 const gameContent = gameTwo.querySelector(`.game__content`);
 const back = gameTwo.querySelector(`.back`);
 
-gameContent.addEventListener(`input`, () => {
+const answerHandler = () => {
   changeScreen(gameThree);
-});
+};
 
+gameContent.addEventListener(`input`, answerHandler);
 backToGreeting(back);
 
 

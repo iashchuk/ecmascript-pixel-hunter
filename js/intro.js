@@ -12,8 +12,10 @@ const intro = getElementFromTemplate(TEMPLATE);
 
 const asteriskButton = intro.querySelector(`.intro__asterisk`);
 
-asteriskButton.addEventListener(`click`, () => {
+const asteriskButtonHandler = () => {
   changeScreen(greeting);
-});
+};
+
+asteriskButton.addEventListener(`click`, asteriskButtonHandler);
 
 export default intro;

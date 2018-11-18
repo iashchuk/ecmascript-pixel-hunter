@@ -39,14 +39,17 @@ const rulesInput = rules.querySelector(`.rules__input`);
 const rulesButton = rules.querySelector(`.rules__button`);
 const back = rules.querySelector(`.back`);
 
-
-rulesInput.addEventListener(`input`, () => {
+const rulesInputHandler = () => {
   rulesButton.disabled = !rulesInput.value;
-});
+};
 
-rulesButton.addEventListener(`click`, () => {
+const rulesButtonHandler = () => {
   changeScreen(gameOne);
-});
+};
+
+
+rulesInput.addEventListener(`input`, rulesInputHandler);
+rulesButton.addEventListener(`click`, rulesButtonHandler);
 
 backToGreeting(back);
 

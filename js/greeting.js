@@ -28,8 +28,10 @@ const greeting = getElementFromTemplate(TEMPLATE);
 
 const greetingContinue = greeting.querySelector(`.greeting__continue`);
 
-greetingContinue.addEventListener(`click`, () => {
+const continueHandler = () => {
   changeScreen(rules);
-});
+};
+
+greetingContinue.addEventListener(`click`, continueHandler);
 
 export default greeting;
