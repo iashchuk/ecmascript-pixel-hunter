@@ -1,6 +1,6 @@
 import {getElementFromTemplate, changeScreen} from './services';
 import backToGreeting from './back';
-import gameOne from './game-1';
+import gameOne from './game-one';
 
 
 const TEMPLATE = `
