@@ -1,4 +1,6 @@
-import {assert} from 'chai';
+import {
+  assert
+} from 'chai';
 import * as logic from '../logic';
 
 describe(`Scoring`, () => {
@@ -14,5 +16,19 @@ describe(`Scoring`, () => {
       logic.AnswerScore.NORMAL,
       logic.AnswerScore.NORMAL
     ], 3), -1);
+  });
+  it(`should return 1150 if all lives and normal speed`, () => {
+    assert.equal(logic.scoring([
+      logic.AnswerScore.NORMAL,
+      logic.AnswerScore.NORMAL,
+      logic.AnswerScore.NORMAL,
+      logic.AnswerScore.NORMAL,
+      logic.AnswerScore.NORMAL,
+      logic.AnswerScore.NORMAL,
+      logic.AnswerScore.NORMAL,
+      logic.AnswerScore.NORMAL,
+      logic.AnswerScore.NORMAL,
+      logic.AnswerScore.NORMAL
+    ], 3), 1150);
   });
 });
