@@ -45,4 +45,18 @@ describe(`Scoring`, () => {
       logic.AnswerScore.NORMAL
     ], -1), 0);
   });
+  it(`should return 1650 for maximum score`, () => {
+    assert.equal(logic.scoring([
+      logic.AnswerScore.FAST,
+      logic.AnswerScore.FAST,
+      logic.AnswerScore.FAST,
+      logic.AnswerScore.FAST,
+      logic.AnswerScore.FAST,
+      logic.AnswerScore.FAST,
+      logic.AnswerScore.FAST,
+      logic.AnswerScore.FAST,
+      logic.AnswerScore.FAST,
+      logic.AnswerScore.FAST
+    ], 3), 1650);
+  });
 });
