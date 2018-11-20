@@ -31,4 +31,18 @@ describe(`Scoring`, () => {
       logic.AnswerScore.NORMAL
     ], 3), 1150);
   });
+  it(`should return 0 if less than 0 lives`, () => {
+    assert.equal(logic.scoring([
+      logic.AnswerScore.NORMAL,
+      logic.AnswerScore.NORMAL,
+      logic.AnswerScore.NORMAL,
+      logic.AnswerScore.NORMAL,
+      logic.AnswerScore.NORMAL,
+      logic.AnswerScore.NORMAL,
+      logic.AnswerScore.NORMAL,
+      logic.AnswerScore.NORMAL,
+      logic.AnswerScore.NORMAL,
+      logic.AnswerScore.NORMAL
+    ], -1), 0);
+  });
 });
