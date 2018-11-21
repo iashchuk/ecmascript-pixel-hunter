@@ -1,3 +1,10 @@
+const START_GAME = {
+  level: 0,
+  lives: 3,
+  timer: 30
+};
+
+
 const AnswerScore = {
   WRONG: 0,
   SLOW: 50,
@@ -6,4 +13,4 @@ const AnswerScore = {
   BONUS: 50
 };
 
-export {AnswerScore};
+export {AnswerScore, START_GAME};
