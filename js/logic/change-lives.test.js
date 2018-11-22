@@ -15,4 +15,9 @@ describe(`Change lives`, () => {
     assert.equal(changeLives(current, AnswerScore.WRONG).lives, 0);
   });
 
+  it(`should return Error if quanity of lives is negative`, () => {
+    const current = Object.assign({}, START_GAME, {lives: 0});
+    assert.throws(() => changeLives(current, AnswerScore.WRONG).lives);
+  });
+
 });
