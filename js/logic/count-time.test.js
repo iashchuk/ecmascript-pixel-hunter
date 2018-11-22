@@ -12,4 +12,12 @@ describe(`Count time`, () => {
     assert.equal(countTime(START_GAME, 0).time, 0);
   });
 
+  it(`should return Error if time is negative`, () => {
+    assert.throws(() => countTime(START_GAME, -10).time);
+  });
+
+  it(`should return Error if time is more max time`, () => {
+    assert.throws(() => countTime(START_GAME, 60).level);
+  });
+
 });
