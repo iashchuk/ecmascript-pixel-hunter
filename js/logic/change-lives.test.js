@@ -20,4 +20,9 @@ describe(`Change lives`, () => {
     assert.throws(() => changeLives(current, AnswerScore.WRONG).lives);
   });
 
+  it(`should return Error if quanity of lives more max lives`, () => {
+    const current = Object.assign({}, START_GAME, {lives: 4});
+    assert.throws(() => changeLives(current, AnswerScore.NORMAL).lives);
+  });
+
 });
