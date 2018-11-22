@@ -5,6 +5,7 @@ const START_GAME = {
 };
 
 const MAX_LEVEL = 10;
+const MAX_TIME = 30;
 
 const AnswerScore = {
   WRONG: 0,
@@ -14,4 +15,4 @@ const AnswerScore = {
   BONUS: 50
 };
 
-export {AnswerScore, START_GAME, MAX_LEVEL};
+export {AnswerScore, START_GAME, MAX_LEVEL, MAX_TIME};
