@@ -1,4 +1,4 @@
-import {MAX_TIME} from './config';
+import {MAX_GAME_VALUES} from './config';
 
 
 const countTime = (game, time) => {
@@ -7,7 +7,7 @@ const countTime = (game, time) => {
     throw new Error(`should not be negative value of time`);
   }
 
-  if (time > MAX_TIME) {
+  if (time > MAX_GAME_VALUES.time) {
     throw new Error(`should not be more than max time`);
   }
 

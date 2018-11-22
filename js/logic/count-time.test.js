@@ -5,7 +5,7 @@ import {countTime} from './count-time';
 describe(`Count time`, () => {
 
   it(`should set time on default timer`, () => {
-    assert.equal(countTime(START_GAME, START_GAME.timer).time, 30);
+    assert.equal(countTime(START_GAME, START_GAME.time).time, 30);
   });
 
   it(`should reset time and set value of 0`, () => {
