@@ -1,4 +1,4 @@
-const START_GAME = {
+const INITIAL_GAME = {
   level: 0,
   lives: 3,
   time: 30
@@ -18,4 +18,4 @@ const AnswerScore = {
   BONUS: 50
 };
 
-export {AnswerScore, START_GAME, MAX_GAME_VALUES};
+export {AnswerScore, INITIAL_GAME, MAX_GAME_VALUES};
