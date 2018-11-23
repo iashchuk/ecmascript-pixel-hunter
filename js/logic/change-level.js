@@ -1,6 +1,11 @@
 import {MAX_GAME_VALUES} from './config';
 
 const changeLevel = (game, level) => {
+
+  if (typeof level !== `number`) {
+    throw new Error(`level should be of type number`);
+  }
+
   if (level < 0) {
     throw new Error(`should not be negative value of level`);
   }

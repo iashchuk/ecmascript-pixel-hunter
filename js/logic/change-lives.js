@@ -4,6 +4,10 @@ const changeLives = (game, answer) => {
   const result = (answer) ? 0 : 1;
   const lives = game.lives - result;
 
+  if (typeof lives !== `number`) {
+    throw new Error(`lives should be of type number`);
+  }
+
   if (lives < 0) {
     throw new Error(`should not be negative value of lives`);
   }
