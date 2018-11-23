@@ -59,4 +59,19 @@ describe(`Scoring`, () => {
       createAnswer(true, 21),
     ], 3), 1650);
   });
+
+  it(`should return Error if time is negative`, () => {
+    assert.throws(() => scoring([
+      createAnswer(true, 15),
+      createAnswer(true, 15),
+      createAnswer(true, 15),
+      createAnswer(false, 15),
+      createAnswer(true, 15),
+      createAnswer(true, 15),
+      createAnswer(true, 15),
+      createAnswer(true, 15),
+      createAnswer(true, -15),
+      createAnswer(true, 15),
+    ], 1));
+  });
 });
