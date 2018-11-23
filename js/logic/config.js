@@ -18,4 +18,20 @@ const AnswerScore = {
   BONUS: 50
 };
 
-export {AnswerScore, INITIAL_GAME, MAX_GAME_VALUES};
+const AnswerTime = {
+  SLOW: 10,
+  FAST: 20,
+};
+
+const creatInitialState = () => {
+  return {
+    currentGameIndex: INITIAL_GAME.level,
+    livesCount: INITIAL_GAME.lives,
+    time: INITIAL_GAME.time
+  };
+};
+
+creatInitialState();
+
+
+export {INITIAL_GAME, MAX_GAME_VALUES, AnswerScore, AnswerTime};
