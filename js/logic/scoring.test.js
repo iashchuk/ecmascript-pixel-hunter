@@ -16,6 +16,7 @@ describe(`Scoring`, () => {
       AnswerScore.NORMAL
     ], 3), -1);
   });
+
   it(`should return 1150 if all lives and normal speed`, () => {
     assert.equal(scoring([
       AnswerScore.NORMAL,
@@ -30,8 +31,9 @@ describe(`Scoring`, () => {
       AnswerScore.NORMAL
     ], 3), 1150);
   });
-  it(`should return 0 if less than 0 lives`, () => {
-    assert.equal(scoring([
+
+  it(`should return Error if lives is negative`, () => {
+    assert.throws(() => scoring([
       AnswerScore.NORMAL,
       AnswerScore.NORMAL,
       AnswerScore.NORMAL,
@@ -42,8 +44,9 @@ describe(`Scoring`, () => {
       AnswerScore.NORMAL,
       AnswerScore.NORMAL,
       AnswerScore.NORMAL
-    ], -1), 0);
+    ], -1));
   });
+
   it(`should return 1650 for maximum score`, () => {
     assert.equal(scoring([
       AnswerScore.FAST,
