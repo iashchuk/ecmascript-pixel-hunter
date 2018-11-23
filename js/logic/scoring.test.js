@@ -74,4 +74,19 @@ describe(`Scoring`, () => {
       createAnswer(true, 15),
     ], 1));
   });
+
+  it(`should return Error if answer is not bool`, () => {
+    assert.throws(() => scoring([
+      createAnswer(true, 15),
+      createAnswer(true, 15),
+      createAnswer(true, 15),
+      createAnswer(false, 15),
+      createAnswer(true, 15),
+      createAnswer(1, 15),
+      createAnswer(true, 15),
+      createAnswer(2, 15),
+      createAnswer(true, -15),
+      createAnswer(true, 15),
+    ], 1));
+  });
 });
