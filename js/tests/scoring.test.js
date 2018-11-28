@@ -1,5 +1,5 @@
 import {assert} from 'chai';
-import {scoring, createAnswer} from './scoring';
+import {scoring, createAnswer} from '../logic/scoring';
 
 describe(`Scoring`, () => {
   it(`should return -1 if less than 10 answers`, () => {

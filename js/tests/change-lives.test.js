@@ -1,6 +1,6 @@
 import {assert} from 'chai';
-import {AnswerScore, INITIAL_GAME} from './config';
-import {changeLives} from './change-lives';
+import {AnswerScore, INITIAL_GAME} from '../logic/config';
+import {changeLives} from '../logic/change-lives';
 
 
 describe(`Change lives`, () => {
