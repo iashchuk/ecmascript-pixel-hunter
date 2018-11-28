@@ -1,7 +1,7 @@
 import indicatorsTemplate from '../templates/indicators.template';
 
 
-const getIndicators = (answers) => {
+export default (answers) => {
   const indicatorsBlock = indicatorsTemplate();
   const indicators = indicatorsBlock.querySelectorAll(`li`);
 
@@ -21,5 +21,3 @@ const getIndicators = (answers) => {
   }
   return indicatorsBlock;
 };
-
-export {getIndicators};
