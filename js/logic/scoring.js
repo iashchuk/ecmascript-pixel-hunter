@@ -36,7 +36,10 @@ const scoring = (answers, lives) => {
     }
   });
 
-  resultState.total = resultState.normal.points + resultState.fast.points + resultState.slow.points + (lives * AnswerScore.BONUS);
+  resultState.lives.count = lives;
+  resultState.lives.points = lives * AnswerScore.BONUS;
+
+  resultState.total = resultState.normal.points + resultState.fast.points + resultState.slow.points + resultState.lives.points;
 
   return resultState;
 };

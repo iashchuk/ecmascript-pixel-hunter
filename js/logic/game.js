@@ -1,26 +1,20 @@
 import {createScreen} from '../services';
 import {getGameList} from '../data/data';
-import {getHeader} from '../templates/header';
-import indicators from './indicators';
-import getFooter from '../templates/footer';
+import {getDefaultState} from './config';
 import spot from './spot';
 import choose from './choose';
 import guess from './guess';
+import indicators from './indicators';
+import {getHeader} from '../templates/header';
+import getFooter from '../templates/footer';
 
 
 let gameState;
 let gameList;
 
-const getDefaultState = () => {
+const initGame = () => {
   gameList = getGameList();
-  gameState = {
-    level: 0,
-    time: 30,
-    lives: 3,
-    points: 0,
-    answers: [],
-    gameOver: false
-  };
+  gameState = getDefaultState();
 };
 
 const getGameState = () => {
@@ -35,4 +29,4 @@ const getGameScreen = ({level, lives, time, answers}) => {
 };
 
 
-export {getDefaultState, getGameState, getGameScreen};
+export {initGame, getGameState, getGameScreen};

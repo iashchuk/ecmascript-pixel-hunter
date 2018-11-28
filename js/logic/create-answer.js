@@ -1,11 +1,12 @@
 import {changeLives} from './change-lives';
+import {AnswerTime} from './config';
 
 const createAnswer = (state, result, time) => {
   let answer = {
     isCorrect: result,
     time,
-    isFast: time > 20,
-    isSlow: time < 10
+    isFast: time > AnswerTime.FAST,
+    isSlow: time < AnswerTime.SLOW
   };
 
   changeLives(state, answer);

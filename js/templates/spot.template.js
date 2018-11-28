@@ -5,7 +5,7 @@ const getGameTemplate = (game) => {
   const [params] = game.params;
   return `
   <section class="game">
-        <p class="game__task">${params.description}</p>
+        <p class="game__task">${game.description}</p>
         <form class="game__content game__content--wide">
 
           <div class="game__option" data-type="${params.type}" data-number="${params.index}">

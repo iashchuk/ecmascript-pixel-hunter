@@ -1,4 +1,4 @@
 import {changeScreen} from './services';
-import intro from './intro';
+import intro from './templates/intro';
 
-changeScreen(intro);
+changeScreen(intro());

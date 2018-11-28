@@ -9,7 +9,7 @@ const getGameTemplate = (game) => {
         ${game.params.map((param) => `
         <div class="game__option">
           <img src="${param.src}" data-type="${param.type}" alt="Option 1" width="304" height="455">
-        </div>`)}
+        </div>`).join(``)}
         </form>
   </section>`;
 };

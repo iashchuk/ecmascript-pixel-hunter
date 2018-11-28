@@ -18,7 +18,7 @@ const getGameTemplate = (game) => {
                 <span>Рисунок</span>
               </label>
             </div>
-            `)}
+            `).join(``)}
         </form>
   </section>`;
 };

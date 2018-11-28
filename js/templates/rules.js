@@ -1,8 +1,8 @@
 import {getElementFromTemplate, changeScreen, createScreen} from '../services';
 import {getBackButton} from './header';
-import {getDefaultState, getGameScreen} from '../logic/game';
+import {initGame, getGameScreen} from '../logic/game';
 import footer from './footer';
-import {INITIAL_GAME} from '../logic/config';
+import {getDefaultState} from '../logic/config';
 
 
 const rulesTemplate = `
@@ -37,8 +37,8 @@ export default () => {
   };
 
   const rulesButtonHandler = () => {
-    getDefaultState();
-    changeScreen(getGameScreen(INITIAL_GAME));
+    initGame();
+    changeScreen(getGameScreen(getDefaultState()));
   };
 
   rulesInput.addEventListener(`input`, rulesInputHandler);
