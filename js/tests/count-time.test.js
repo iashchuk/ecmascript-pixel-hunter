@@ -1,18 +1,18 @@
 import {assert} from 'chai';
-import {INITIAL_GAME} from '../logic/config';
+import {getDefaultState} from '../logic/config';
 import {countTime} from '../logic/count-time';
 
 describe(`Count time`, () => {
 
   it(`should return 29 after calling tick 1 time for start 30 sec`, () => {
-    const newTimer = countTime(INITIAL_GAME.time);
+    const newTimer = countTime(getDefaultState().time);
     newTimer.tick();
     assert.equal(newTimer.remainTime, 29);
   });
 
   it(`should return 0 after calling tick 30 times for start 30 sec and call function onTimeEnd`, () => {
-    const newTimer = countTime(INITIAL_GAME.time);
-    for (let i = 1; i <= INITIAL_GAME.time; i++) {
+    const newTimer = countTime(getDefaultState().time);
+    for (let i = 1; i <= getDefaultState().time; i++) {
       newTimer.tick();
     }
     assert.equal(newTimer.remainTime, 0);
