@@ -1,47 +1,48 @@
-import {AnswerScore, AnswerTime} from './config';
-
-const createAnswer = (answer, time) => {
-  return {
-    answer,
-    time
-  };
-};
-
+import {AnswerScore} from './config';
 
 const scoring = (answers, lives) => {
-  if (answers.length < 10) {
-    return -1;
-  }
+  let resultState = {
+    normal: {
+      count: 0,
+      points: 0
+    },
+    fast: {
+      count: 0,
+      points: 0
+    },
+    slow: {
+      count: 0,
+      points: 0
+    },
+    lives: {
+      count: 0,
+      points: 0
+    },
+    total: 0
+  };
 
-  if (typeof lives !== `number`) {
-    throw new Error(`lives should be of type number`);
-  }
-
-  if (lives < 0) {
-    throw new Error(`should not be negative value of lives`);
-  }
-
-  let score = 0;
-
-  answers.forEach((result) => {
-    if (result.time < 0) {
-      throw new Error(`should not be negative value of time`);
+  answers.forEach((answer) => {
+    if (answer.isCorrect) {
+      resultState.normal.points += AnswerScore.NORMAL;
+      resultState.normal.count++;
     }
-
-    if (typeof result.answer !== `boolean` && result.answer !== 0 && result.answer !== 1) {
-      throw new Error(`answer should be of type boolean or 0/1`);
+    if (answer.isCorrect && answer.isFast) {
+      resultState.fast.points += AnswerScore.FAST;
+      resultState.fast.count++;
     }
-
-    if (result.answer && result.time > AnswerTime.FAST) {
-      score += AnswerScore.FAST;
-    } else if (result.answer && result.time < AnswerTime.SLOW) {
-      score += AnswerScore.SLOW;
-    } else if (result.answer) {
-      score += AnswerScore.NORMAL;
+    if (answer.isCorrect && answer.isSlow) {
+      resultState.slow.points += AnswerScore.SLOW;
+      resultState.slow.count++;
     }
   });
-  score += lives * AnswerScore.BONUS;
-  return score;
+
+  resultState.lives.count = lives;
+  resultState.lives.points = lives * AnswerScore.BONUS;
+
+  resultState.total = resultState.normal.points + resultState.fast.points + resultState.slow.points + resultState.lives.points;
+
+  return resultState;
 };
 
-export {createAnswer, scoring};
+
+export {scoring};

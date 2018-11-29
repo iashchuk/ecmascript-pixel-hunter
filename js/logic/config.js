@@ -1,20 +1,23 @@
-const INITIAL_GAME = {
-  level: 0,
-  lives: 3,
-  time: 30
-};
-
 const MAX_GAME_VALUES = {
   level: 10,
   lives: 3,
   time: 30
 };
 
+const DEFAULT_STATE = {
+  level: 0,
+  time: 30,
+  lives: 3,
+  points: 0,
+  answers: [],
+  gameOver: false
+};
+
 const AnswerScore = {
   WRONG: 0,
-  SLOW: 50,
+  SLOW: -50,
   NORMAL: 100,
-  FAST: 150,
+  FAST: 50,
   BONUS: 50
 };
 
@@ -23,15 +26,9 @@ const AnswerTime = {
   FAST: 20,
 };
 
-const creatInitialState = () => {
-  return {
-    currentGameIndex: INITIAL_GAME.level,
-    livesCount: INITIAL_GAME.lives,
-    time: INITIAL_GAME.time
-  };
+const getDefaultState = () => {
+  return Object.assign({}, DEFAULT_STATE);
 };
 
-creatInitialState();
 
-
-export {INITIAL_GAME, MAX_GAME_VALUES, AnswerScore, AnswerTime};
+export {MAX_GAME_VALUES, AnswerScore, AnswerTime, getDefaultState};

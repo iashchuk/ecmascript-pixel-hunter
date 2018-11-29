@@ -1,7 +1,8 @@
-import {getElementFromTemplate, changeScreen} from './services';
+import {getElementFromTemplate, changeScreen, createScreen} from '../services';
 import rules from './rules';
+import footer from './footer';
 
-const TEMPLATE = `
+const greetingTemplate = `
   <section class="greeting central--blur">
     <img class="greeting__logo" src="img/logo_ph-big.svg" width="201" height="89" alt="Pixel Hunter">
     <div class="greeting__asterisk asterisk"><span class="visually-hidden">Я просто красивая звёздочка</span>*</div>
@@ -24,14 +25,13 @@ const TEMPLATE = `
   </section>
 `;
 
-const greeting = getElementFromTemplate(TEMPLATE);
 
-const greetingContinue = greeting.querySelector(`.greeting__continue`);
+export default () => {
 
-const continueHandler = () => {
-  changeScreen(rules);
+  const greetingElement = getElementFromTemplate(greetingTemplate);
+
+  const greetingContinue = greetingElement.querySelector(`.greeting__continue`);
+  greetingContinue.addEventListener(`click`, () => changeScreen(rules()));
+
+  return createScreen(greetingElement, footer());
 };
-
-greetingContinue.addEventListener(`click`, continueHandler);
-
-export default greeting;

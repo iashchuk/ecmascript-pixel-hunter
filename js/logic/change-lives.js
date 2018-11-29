@@ -1,22 +1,22 @@
 import {MAX_GAME_VALUES} from './config';
 
-const changeLives = (game, answer) => {
-  const result = (answer) ? 0 : 1;
-  const lives = game.lives - result;
-
-  if (typeof lives !== `number`) {
+const changeLives = (state, answer) => {
+  if (typeof state.lives !== `number`) {
     throw new Error(`lives should be of type number`);
   }
 
-  if (lives < 0) {
+  if (state.lives < 0) {
     throw new Error(`should not be negative value of lives`);
   }
 
-  if (lives > MAX_GAME_VALUES.lives) {
+  if (state.lives > MAX_GAME_VALUES.lives) {
     throw new Error(`should not be more than max lives`);
   }
 
-  return Object.assign({}, game, {lives});
+  if (!answer.isCorrect) {
+    state.lives--;
+  }
+
 };
 
 export {changeLives};
