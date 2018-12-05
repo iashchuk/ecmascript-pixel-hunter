@@ -1,10 +1,7 @@
 import AbstractView from './abstract-view';
-import back from '../templates/back-template';
-import timer from '../templates/timer-template';
-import lives from '../templates/lives-template';
-import indicators from '../logic/indicators';
-import footer from '../templates/footer';
-
+import HeaderView from './header-view';
+import footer from './components/footer-component';
+import indicators from './components/indicators-component';
 
 export default class SpotGameView extends AbstractView {
 
@@ -16,12 +13,10 @@ export default class SpotGameView extends AbstractView {
   }
 
   get template() {
+    const header = new HeaderView(this.state);
+
     return `
-    <header class="header">
-      ${back}
-      ${timer(this.state.time)}
-      ${lives(this.state.lives)}
-    </header>
+    ${header.template}
     <section class="game">
       <p class="game__task">${this.game.description}</p>
       <form class="game__content game__content--wide">
@@ -51,12 +46,14 @@ export default class SpotGameView extends AbstractView {
 
     gameContent.addEventListener(`click`, () => {
       let result = (gameOption === gameContent.question1.value);
-      this.answerHandler(result);
+      if (gameContent.question1.value) {
+        this.answerHandler(result);
+      }
     });
 
     backButton.addEventListener(`click`, () => this.backButtonHandler());
   }
 
-  answerHandler() {}
   backButtonHandler() {}
+  answerHandler() {}
 }
