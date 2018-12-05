@@ -4,9 +4,9 @@ import {changeScreen} from '../services';
 import {getGameScreen, getGameState} from './game-screen';
 
 export default () => {
-  const modalConfirm = new ModalConfirmView();
-  modalConfirm.confirmHandler = () => changeScreen(getGreetingScreen());
-  modalConfirm.cancelHandler = () => changeScreen(getGameScreen(getGameState()));
+  const modal = new ModalConfirmView();
+  modal.confirmHandler = () => changeScreen(getGreetingScreen());
+  modal.cancelHandler = () => changeScreen(getGameScreen(getGameState()));
 
-  return modalConfirm.element;
+  return modal.element;
 };

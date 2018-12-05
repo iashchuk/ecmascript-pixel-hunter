@@ -8,16 +8,16 @@ import getModalConfirmScreen from './modal-screen';
 
 
 export default () => {
-  const spotGame = new GuessGameView(getGameState(), gameData.guess);
-  const spotGameScreen = spotGame.element;
+  const game = new GuessGameView(getGameState(), gameData.guess);
+  const gameScreen = game.element;
 
-  spotGame.answerHandler = (evt) => {
+  game.answerHandler = (evt) => {
     let result = (evt.target.dataset.type === `paint`);
     createAnswer(getGameState(), result, getGameState().time);
     changeLevel(getGameState());
   };
 
-  spotGame.backButtonHandler = () => changeScreen(getModalConfirmScreen());
+  game.backButtonHandler = () => changeScreen(getModalConfirmScreen());
 
-  return spotGameScreen;
+  return gameScreen;
 };

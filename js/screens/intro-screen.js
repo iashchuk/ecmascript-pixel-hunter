@@ -4,7 +4,7 @@ import {changeScreen} from '../services';
 
 
 export default () => {
-  const introView = new IntroView();
-  introView.asteriskButtonHandler = () => changeScreen(getGreetingScreen());
-  return introView.element;
+  const intro = new IntroView();
+  intro.asteriskButtonHandler = () => changeScreen(getGreetingScreen());
+  return intro.element;
 };

@@ -4,8 +4,8 @@ import {initGame} from './game-screen';
 import {changeScreen} from '../services';
 
 export default () => {
-  const rulesView = new RulesView();
-  rulesView.rulesButtonHandler = () => initGame();
-  rulesView.backButtonHandler = () => changeScreen(getGreetingScreen());
-  return rulesView.element;
+  const rules = new RulesView();
+  rules.rulesButtonHandler = () => initGame();
+  rules.backButtonHandler = () => changeScreen(getGreetingScreen());
+  return rules.element;
 };
