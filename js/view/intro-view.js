@@ -1,5 +1,5 @@
 import AbstractView from './abstract-view';
-import footer from '../templates/footer';
+import footer from './components/footer-component';
 
 
 export default class IntroView extends AbstractView {
@@ -18,10 +18,10 @@ export default class IntroView extends AbstractView {
     `;
   }
 
-  onAsteriskButtonClick() {}
-
   bind() {
     const asteriskButton = this.element.querySelector(`.intro__asterisk`);
-    asteriskButton.addEventListener(`click`, this.onAsteriskButtonClick);
+    asteriskButton.addEventListener(`click`, this.asteriskButtonHandler);
   }
+
+  asteriskButtonHandler() {}
 }
