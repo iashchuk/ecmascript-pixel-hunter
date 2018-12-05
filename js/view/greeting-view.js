@@ -1,5 +1,5 @@
 import AbstractView from './abstract-view';
-import footer from '../templates/footer';
+import footer from './components/footer-component';
 
 export default class GreetingView extends AbstractView {
   constructor() {
@@ -32,10 +32,10 @@ export default class GreetingView extends AbstractView {
     `;
   }
 
-  continueButtonHandler() {}
-
   bind() {
     const continueButton = this.element.querySelector(`.greeting__continue`);
     continueButton.addEventListener(`click`, this.continueButtonHandler);
   }
+
+  continueButtonHandler() {}
 }
