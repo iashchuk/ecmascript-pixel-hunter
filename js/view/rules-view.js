@@ -1,6 +1,6 @@
 import AbstractView from './abstract-view';
-import back from '../templates/back-template';
-import footer from '../templates/footer';
+import BackView from './back-view';
+import footer from './components/footer-component';
 
 
 export default class RulesView extends AbstractView {
@@ -9,8 +9,10 @@ export default class RulesView extends AbstractView {
   }
 
   get template() {
+    const back = new BackView();
+
     return `
-      <header claass="header">${back}</header>
+      <header claass="header">${back.template}</header>
       <section class="rules">
         <h2 class="rules__title">Правила</h2>
         <ul class="rules__description">
@@ -40,9 +42,9 @@ export default class RulesView extends AbstractView {
 
     rulesInput.addEventListener(`input`, rulesInputHandler);
     rulesButton.addEventListener(`click`, this.rulesButtonHandler);
-    backButton.addEventListener(`click`, this.backButtonHadler);
+    backButton.addEventListener(`click`, this.backButtonHandler);
   }
 
   rulesButtonHandler() {}
-  backButtonHadler() {}
+
 }
