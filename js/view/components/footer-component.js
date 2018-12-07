@@ -1,6 +1,4 @@
-import {getElementFromTemplate} from '../services';
-
-const footerTemplate = `
+export default `
 <footer class="footer">
   <a href="https://htmlacademy.ru" class="social-link">
     <span class="visually-hidden">HTML Academy</span>
@@ -37,6 +35,3 @@ const footerTemplate = `
   </div>
 </footer>
 `;
-
-
-export default () => getElementFromTemplate(footerTemplate);

@@ -6,7 +6,7 @@ const changeScreen = (element) => {
 };
 
 
-const getElementFromTemplate = (template) => {
+const render = (template) => {
   const wrapperElement = document.createElement(`div`);
   wrapperElement.innerHTML = template.trim();
   return wrapperElement;
@@ -29,4 +29,4 @@ const getRandomInRange = function (min, max) {
   return Math.floor(Math.random() * (max - min) + min);
 };
 
-export {changeScreen, getElementFromTemplate, createScreen, getRandomElement, getRandomInRange};
+export {changeScreen, render, createScreen, getRandomElement, getRandomInRange};
