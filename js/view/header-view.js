@@ -1,5 +1,5 @@
 import AbstractView from './abstract-view';
-import BackView from './back-view';
+import back from './components/back-component';
 import timer from './components/timer-component';
 import lives from './components/lives-component';
 
@@ -11,16 +11,21 @@ export default class HeaderView extends AbstractView {
   }
 
   get template() {
-    const back = new BackView();
-
     return `
-    <header class="header">
-      ${back.template}
-      ${timer(this.state.time)}
-      ${lives(this.state.lives)}
-    </header>`;
+      <header class="header">
+        ${back}
+        ${timer(this.state.time)}
+        ${lives(this.state.lives)}
+      </header>
+    `;
   }
 
-  bind() {}
+  bind() {
+    const backButton = this.element.querySelector(`.back`);
+    backButton.addEventListener(`click`, () => this.backButtonHandler());
+
+  }
+
+  backButtonHandler() {}
 
 }
