@@ -25,15 +25,34 @@ export default class ModalConfirmView extends AbstractView {
   }
 
   bind() {
+    const ESC_KEYCODE = 27;
     const buttonConfirm = this.element.querySelector(`.modal__btn--confirm`);
     const buttonCancel = this.element.querySelector(`.modal__btn--cancel`);
     const buttonClose = this.element.querySelector(`.modal__close`);
 
-    buttonCancel.addEventListener(`click`, this.cancelHandler);
-    buttonClose.addEventListener(`click`, this.cancelHandler);
-    buttonConfirm.addEventListener(`click`, this.confirmHandler());
+    const confirmElementHandler = () => {
+      this.element.remove();
+      this.confirmHandler();
+    };
+
+    const cancelElementHandler = () => {
+      this.element.remove();
+      this.cancelHandler();
+    };
+
+    const escKeyDownHandler = (evt) => {
+      if (evt.keyCode === ESC_KEYCODE) {
+        cancelElementHandler();
+      }
+    };
+
+    document.addEventListener(`keydown`, escKeyDownHandler);
+    buttonConfirm.addEventListener(`click`, confirmElementHandler);
+    buttonCancel.addEventListener(`click`, cancelElementHandler);
+    buttonClose.addEventListener(`click`, cancelElementHandler);
   }
 
   confirmHandler() {}
-  cancelHandler() {}
+  cancelHandler() {
+  }
 }
