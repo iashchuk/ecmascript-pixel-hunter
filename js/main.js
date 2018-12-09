@@ -1,4 +1,3 @@
-import {changeScreen} from './services';
-import getIntroScreen from './screens/intro-screen';
+import Router from './router';
 
-changeScreen(getIntroScreen());
+Router.showIntro();
