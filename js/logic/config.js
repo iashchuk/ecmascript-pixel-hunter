@@ -1,16 +1,9 @@
-const MAX_GAME_VALUES = {
-  level: 10,
-  lives: 3,
-  time: 30
-};
-
-const DEFAULT_STATE = {
+const INITIAL_STATE = {
   level: 0,
+  games: 10,
   time: 30,
   lives: 3,
-  points: 0,
-  answers: [],
-  gameOver: false
+  answers: []
 };
 
 const AnswerScore = {
@@ -22,13 +15,19 @@ const AnswerScore = {
 };
 
 const AnswerTime = {
-  SLOW: 10,
-  FAST: 20,
+  FAST: 10,
+  SLOW: 20
 };
 
 const getDefaultState = () => {
-  return Object.assign({}, DEFAULT_STATE);
+  return {
+    level: 0,
+    games: INITIAL_STATE.games,
+    lives: INITIAL_STATE.lives,
+    time: INITIAL_STATE.time,
+    answers: []
+  };
 };
 
 
-export {MAX_GAME_VALUES, AnswerScore, AnswerTime, getDefaultState};
+export {INITIAL_STATE, AnswerScore, AnswerTime, getDefaultState};

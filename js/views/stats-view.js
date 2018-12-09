@@ -2,6 +2,7 @@ import AbstractView from './abstract-view';
 import indicators from './components/indicators-component';
 import scoring from '../logic/scoring';
 
+
 export default class StatsView extends AbstractView {
   constructor(state) {
     super();
@@ -12,7 +13,7 @@ export default class StatsView extends AbstractView {
   get template() {
     return `
       <div class="result">
-        <h1>${!this.state.gameOver ? `Победа` : `Поражение`}</h1>
+        <h1>${this.state.lives ? `Победа` : `Поражение`}</h1>
         <table class="result__table">
           <tr>
             <td class="result__number">1.</td>
