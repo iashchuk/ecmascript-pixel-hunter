@@ -1,15 +1,14 @@
-import StatsView from '../view/stats-view';
-import BackView from '../view/back-view';
-import FooterView from '../view/footer-view';
-import scoring from '../logic/scoring';
+import StatsView from '../views/stats-view';
+import BackView from '../views/back-view';
+import FooterView from '../views/footer-view';
 import Controller from './controller';
 
 
-export default class StatsScreen extends Controller {
+export default class StatsController extends Controller {
   constructor(state) {
     super();
     this.back = new BackView();
-    this.content = new StatsView(state, scoring(state.answers, state.lives));
+    this.content = new StatsView(state);
     this.footer = new FooterView();
 
     this.root = document.createElement(`div`);

@@ -1,5 +1,5 @@
-import IntroView from '../view/intro-view';
-import FooterView from '../view/footer-view';
+import IntroView from '../views/intro-view';
+import FooterView from '../views/footer-view';
 import Controller from './controller';
 
 export default class IntroController extends Controller {

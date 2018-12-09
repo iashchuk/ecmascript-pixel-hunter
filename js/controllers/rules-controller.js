@@ -1,6 +1,6 @@
-import RulesView from '../view/rules-view';
-import BackView from '../view/back-view';
-import FooterView from '../view/footer-view';
+import RulesView from '../views/rules-view';
+import BackView from '../views/back-view';
+import FooterView from '../views/footer-view';
 import Controller from './controller';
 
 

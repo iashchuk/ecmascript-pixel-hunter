@@ -1,11 +1,12 @@
 import AbstractView from './abstract-view';
 import indicators from './components/indicators-component';
+import scoring from '../logic/scoring';
 
 export default class StatsView extends AbstractView {
-  constructor(state, scores) {
+  constructor(state) {
     super();
     this.state = state;
-    ({normal: this.normal, fast: this.fast, slow: this.slow, lives: this.lives, total: this.total} = scores);
+    ({normal: this.normal, fast: this.fast, slow: this.slow, lives: this.lives, total: this.total} = scoring(this.state.answers, this.state.lives));
   }
 
   get template() {

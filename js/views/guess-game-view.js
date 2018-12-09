@@ -27,7 +27,10 @@ export default class GuessGameView extends AbstractView {
 
   bind() {
     const gameContent = this.element.querySelector(`.game__content`);
-    gameContent.addEventListener(`click`, (evt) => this.answerHandler(evt));
+    gameContent.addEventListener(`click`, (evt) => {
+      let result = (evt.target.dataset.type === `paint`);
+      this.answerHandler(result);
+    });
   }
 
   answerHandler() {}

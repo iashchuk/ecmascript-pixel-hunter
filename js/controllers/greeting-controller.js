@@ -1,5 +1,5 @@
-import GreetingView from '../view/greeting-view';
-import FooterView from '../view/footer-view';
+import GreetingView from '../views/greeting-view';
+import FooterView from '../views/footer-view';
 import Controller from './controller';
 
 
