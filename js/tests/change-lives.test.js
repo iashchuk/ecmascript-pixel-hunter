@@ -1,6 +1,6 @@
 import {assert} from 'chai';
 import {getDefaultState} from '../logic/config';
-import {changeLives} from '../logic/change-lives';
+import {changeLives} from './change-lives';
 
 
 describe(`Change lives`, () => {

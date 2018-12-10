@@ -1,6 +1,6 @@
 import {assert} from 'chai';
 import {getDefaultState} from '../logic/config';
-import {countTime} from '../logic/count-time';
+import {countTime} from './count-time';
 
 describe(`Count time`, () => {
 
