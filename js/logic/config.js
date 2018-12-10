@@ -19,6 +19,11 @@ const AnswerTime = {
   SLOW: 20
 };
 
+const ImagesType = {
+  paint: `paint`,
+  photo: `photo`
+};
+
 const getDefaultState = () => {
   return {
     level: 0,
@@ -30,4 +35,4 @@ const getDefaultState = () => {
 };
 
 
-export {INITIAL_STATE, AnswerScore, AnswerTime, getDefaultState};
+export {INITIAL_STATE, AnswerScore, AnswerTime, ImagesType, getDefaultState};

@@ -120,8 +120,19 @@
   width: 304px;
   height: 455px;
 
-  &:hover {
+  &:hover,
+  &:focus {
     border-color: $link-hover-color;
+  }
+
+  &:active {
+    border-color: $link-active-color;
+  }
+}
+
+.game__content--triple .game__option img {
+  &:focus {
+    outline: 10px solid $link-hover-color;
   }
 
   &:active {
