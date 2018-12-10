@@ -78,7 +78,7 @@ export default class GameController extends Controller {
   }
 
   changeLevel() {
-    this.model.die();
+    this.model.nextLevel();
     return this.model.isGameOver() ? this.changeView() : this.updateGame();
   }
 

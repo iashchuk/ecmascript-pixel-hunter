@@ -1,4 +1,4 @@
-import {getRandomElement} from '../services';
+import {getRandomElement} from './services';
 
 const QUANTITY_GAMES = 10;
 

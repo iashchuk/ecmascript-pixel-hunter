@@ -26,7 +26,7 @@ export default class GameModel {
     return this._state.lives <= 0 || this._state.level === INITIAL_STATE.games;
   }
 
-  die() {
+  nextLevel() {
     return this._state.level++;
   }
 
