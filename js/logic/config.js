@@ -20,8 +20,8 @@ const AnswerTime = {
 };
 
 const ImagesType = {
-  paint: `paint`,
-  photo: `photo`
+  painting: `рисунок`,
+  photo: `фото`
 };
 
 const getDefaultState = () => {
