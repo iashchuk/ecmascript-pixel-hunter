@@ -1,5 +1,3 @@
-import {render} from '../services';
-
 export default class AbstractView {
 
   constructor() {
@@ -22,7 +20,9 @@ export default class AbstractView {
   }
 
   render() {
-    return render(this.template);
+    const wrapper = document.createElement(`div`);
+    wrapper.innerHTML = this.template.trim();
+    return wrapper;
   }
 
   bind() {}

@@ -1,48 +1,41 @@
 import {AnswerScore} from './config';
 
-const scoring = (answers, lives) => {
-  let resultState = {
-    normal: {
-      count: 0,
-      points: 0
-    },
+export default (answers, lives) => {
+  return {
     fast: {
-      count: 0,
-      points: 0
+      get count() {
+        return answers.filter((answer) => answer.correct && answer.fast).length;
+      },
+      get points() {
+        return this.count * AnswerScore.FAST;
+      }
     },
     slow: {
-      count: 0,
-      points: 0
+      get count() {
+        return answers.filter((answer) => answer.correct && answer.slow).length;
+      },
+      get points() {
+        return this.count * AnswerScore.SLOW;
+      }
+    },
+    normal: {
+      get count() {
+        return answers.filter((answer) => answer.correct).length;
+      },
+      get points() {
+        return this.count * AnswerScore.NORMAL;
+      }
     },
     lives: {
-      count: 0,
-      points: 0
+      get count() {
+        return lives;
+      },
+      get points() {
+        return this.count * AnswerScore.BONUS;
+      }
     },
-    total: 0
+    get total() {
+      return this.normal.points + this.fast.points + this.slow.points + this.lives.points;
+    }
   };
-
-  answers.forEach((answer) => {
-    if (answer.isCorrect) {
-      resultState.normal.points += AnswerScore.NORMAL;
-      resultState.normal.count++;
-    }
-    if (answer.isCorrect && answer.isFast) {
-      resultState.fast.points += AnswerScore.FAST;
-      resultState.fast.count++;
-    }
-    if (answer.isCorrect && answer.isSlow) {
-      resultState.slow.points += AnswerScore.SLOW;
-      resultState.slow.count++;
-    }
-  });
-
-  resultState.lives.count = lives;
-  resultState.lives.points = lives * AnswerScore.BONUS;
-
-  resultState.total = resultState.normal.points + resultState.fast.points + resultState.slow.points + resultState.lives.points;
-
-  return resultState;
 };
-
-
-export {scoring};

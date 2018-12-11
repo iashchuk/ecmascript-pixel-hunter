@@ -1,18 +1,14 @@
-import {changeLives} from './change-lives';
-import {AnswerTime} from './config';
+import {INITIAL_STATE, AnswerTime} from './config';
 
-const createAnswer = (state, result, time) => {
-  let answer = {
-    isCorrect: result,
-    time,
-    isFast: time > AnswerTime.FAST,
-    isSlow: time < AnswerTime.SLOW
+export default (result, time) => {
+  return {
+    correct: result,
+    time: INITIAL_STATE.time - time,
+    get fast() {
+      return this.time < AnswerTime.FAST;
+    },
+    get slow() {
+      return this.time > AnswerTime.SLOW;
+    }
   };
-
-  changeLives(state, answer);
-
-  state.answers.push(answer);
 };
-
-
-export {createAnswer};

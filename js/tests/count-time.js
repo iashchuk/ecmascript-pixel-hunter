@@ -1,4 +1,4 @@
-import {MAX_GAME_VALUES} from './config';
+import {INITIAL_STATE} from '../logic/config';
 
 
 const countTime = (time) => {
@@ -11,7 +11,7 @@ const countTime = (time) => {
     throw new Error(`should not be negative value of time`);
   }
 
-  if (time > MAX_GAME_VALUES.time) {
+  if (time > INITIAL_STATE.time) {
     throw new Error(`should not be more than max time`);
   }
 

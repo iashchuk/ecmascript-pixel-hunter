@@ -1,8 +1,8 @@
-import {MAX_GAME_VALUES} from './config';
-import {changeScreen} from '../services';
+import {INITIAL_STATE} from '../logic/config';
+import {changeScreen} from '../data/services';
 import {getGameScreen} from '../screens/game-screen';
 import stats from '../screens/stats-screen';
-import {getRandomInRange} from '../services';
+import {getRandomInRange} from '../data/services';
 import {getGameState} from '../screens/game-screen';
 
 const changeLevel = (state) => {
@@ -13,7 +13,7 @@ const changeLevel = (state) => {
     throw new Error(`should not be negative value of level`);
   }
 
-  if (state.level > MAX_GAME_VALUES.level) {
+  if (state.level > INITIAL_STATE.games) {
     throw new Error(`should not be more than max level`);
   }
 

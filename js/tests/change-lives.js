@@ -1,4 +1,4 @@
-import {MAX_GAME_VALUES} from './config';
+import {INITIAL_STATE} from '../logic/config';
 
 const changeLives = (state, answer) => {
   if (typeof state.lives !== `number`) {
@@ -9,7 +9,7 @@ const changeLives = (state, answer) => {
     throw new Error(`should not be negative value of lives`);
   }
 
-  if (state.lives > MAX_GAME_VALUES.lives) {
+  if (state.lives > INITIAL_STATE.lives) {
     throw new Error(`should not be more than max lives`);
   }
 
