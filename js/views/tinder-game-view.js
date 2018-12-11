@@ -1,7 +1,9 @@
 import AbstractView from './abstract-view';
 import indicators from './components/indicators-component';
+import {resizeImages} from '../data/resize.js';
 
-export default class SpotGameView extends AbstractView {
+
+export default class TinderGameView extends AbstractView {
 
   constructor(state, game) {
     super();
@@ -22,7 +24,7 @@ export default class SpotGameView extends AbstractView {
               <span>Фото</span>
             </label>
             <label class="game__answer  game__answer--wide  game__answer--paint">
-              <input class="visually-hidden" name="question${this.params.index}" type="radio" value="paint">
+              <input class="visually-hidden" name="question${this.params.index}" type="radio" value="painting">
               <span>Рисунок</span>
             </label>
           </div>
@@ -37,6 +39,7 @@ export default class SpotGameView extends AbstractView {
     const gameContent = this.element.querySelector(`.game__content`);
     const gameOption = this.element.querySelector(`.game__option`).dataset.type;
 
+    resizeImages(gameContent);
     gameContent.addEventListener(`click`, () => {
       const answer = (gameOption === gameContent.question1.value);
       if (gameContent.question1.value) {

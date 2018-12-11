@@ -2,10 +2,9 @@ import Controller from './controller';
 import HeaderView from '../views/header-view';
 import GuessGameView from '../views/guess-game-view';
 import ChooseGameView from '../views/choose-game-view';
-import SpotGameView from '../views/spot-game-view';
+import TinderGameView from '../views/tinder-game-view';
 import FooterView from '../views/footer-view';
 import createAnswer from '../logic/create-answer';
-import {gameData} from '../data/data';
 
 const ONE_SECOND = 1000;
 
@@ -27,13 +26,14 @@ export default class GameController extends Controller {
 
 
   get game() {
+    const question = this.model.nextGame();
     const typeOfGame = {
-      'spot': new SpotGameView(this.model.state, gameData.spot),
-      'choose': new ChooseGameView(this.model.state, gameData.choose),
-      'guess': new GuessGameView(this.model.state, gameData.guess),
+      'tinder-like': new TinderGameView(this.model.state, question),
+      'two-of-two': new ChooseGameView(this.model.state, question),
+      'one-of-three': new GuessGameView(this.model.state, question)
     };
 
-    const game = typeOfGame[this.model.nextGame()];
+    const game = typeOfGame[question.type];
     game.answerHandler = (result) => this.answerHandler(result);
 
     return game;
@@ -96,5 +96,5 @@ export default class GameController extends Controller {
   }
 
   changeView() {}
-  showModalConfirm() { }
+  showModalConfirm() {}
 }
