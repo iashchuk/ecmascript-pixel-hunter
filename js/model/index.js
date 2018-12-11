@@ -1,9 +1,9 @@
 import {getDefaultState, INITIAL_STATE} from '../logic/config';
-import {getGameList} from '../data/data';
 
 
 export default class GameModel {
-  constructor() {
+  constructor(games) {
+    this.games = games;
     this.restart();
   }
 
@@ -13,7 +13,6 @@ export default class GameModel {
 
   restart() {
     this._state = getDefaultState();
-    this._games = getGameList();
   }
 
   changeLives(answer) {
@@ -31,7 +30,7 @@ export default class GameModel {
   }
 
   nextGame() {
-    return this._games[this._state.level];
+    return this.games[this._state.level];
   }
 
   tick() {
