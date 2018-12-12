@@ -1,5 +1,6 @@
 import AbstractView from './abstract-view';
 import indicators from './components/indicators-component';
+import {resizeImages} from '../data/resize.js';
 
 
 export default class ChooseGameView extends AbstractView {
@@ -22,7 +23,7 @@ export default class ChooseGameView extends AbstractView {
                     <span>Фото</span>
                   </label>
                   <label class="game__answer  game__answer--wide  game__answer--paint">
-                    <input class="visually-hidden" name="question${param.index}" type="radio" value="paint">
+                    <input class="visually-hidden" name="question${param.index}" type="radio" value="painting">
                     <span>Рисунок</span>
                   </label>
                 </div>
@@ -38,6 +39,8 @@ export default class ChooseGameView extends AbstractView {
     const QUESTIONS = 2;
     const gameContent = this.element.querySelector(`.game__content`);
     const gameOptions = this.element.querySelectorAll(`.game__option`);
+
+    resizeImages(gameContent);
 
     gameContent.addEventListener(`change`, () => {
 

@@ -5,9 +5,15 @@ import GreetingController from './controllers/greeting-controller';
 import RulesController from './controllers/rules-controller';
 import StatsController from './controllers/stats-controller';
 import ModalConfirmController from './controllers/modal-confirm-controller';
+import ModalErrorController from './controllers/modal-error-controller';
+import Loader from './data/loader';
 
 export default class Router {
+
   static showIntro() {
+    Loader.loadData()
+      .then((data) => (this.games = data))
+      .catch(this.showModalError);
     const intro = new IntroController();
     intro.changeView = () => this.showGreeting();
     intro.init();
@@ -33,7 +39,7 @@ export default class Router {
   }
 
   static showGame() {
-    const model = new GameModel();
+    const model = new GameModel(this.games);
     const game = new GameController(model);
     game.changeView = () => this.showStats(model.state);
     game.showModalConfirm = () => this.showModalConfirm();
@@ -43,6 +49,11 @@ export default class Router {
   static showModalConfirm() {
     const modal = new ModalConfirmController();
     modal.showGreeting = () => this.showGreeting();
+    modal.init();
+  }
+
+  static showModalError() {
+    const modal = new ModalErrorController();
     modal.init();
   }
 }
