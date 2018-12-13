@@ -1,11 +1,14 @@
 import Controller from './controller';
-import HeaderView from '../views/header-view';
+// import HeaderView from '../views/header-view';
 import GuessGameView from '../views/guess-game-view';
 import ChooseGameView from '../views/choose-game-view';
 import TinderGameView from '../views/tinder-game-view';
 import FooterView from '../views/footer-view';
 import createAnswer from '../logic/create-answer';
 import scoring from '../logic/scoring';
+import BackView from '../views/back-view';
+import LivesView from '../views/lives-view';
+import TimerView from '../views/timer-view';
 
 
 const ONE_SECOND = 1000;
@@ -14,14 +17,20 @@ export default class GameController extends Controller {
   constructor(model) {
     super();
     this.model = model;
-    this._timer = null;
 
-    this.header = new HeaderView(this.model.state);
+    this.back = new BackView(this.model.state);
+    this.timer = new TimerView(this.model.state);
+    this.lives = new LivesView(this.model.state.lives);
     this.content = this.game;
     this.footer = new FooterView();
 
     this.root = document.createElement(`div`);
-    this.root.appendChild(this.header.element);
+    this.header = document.createElement(`header`);
+    this.header.classList.add(`header`);
+    this.header.appendChild(this.back.element);
+    this.header.appendChild(this.timer.element);
+    this.header.appendChild(this.lives.element);
+    this.root.appendChild(this.header);
     this.root.appendChild(this.content.element);
     this.root.appendChild(this.footer.element);
   }
@@ -42,16 +51,25 @@ export default class GameController extends Controller {
   }
 
   updateHeader() {
-    const header = new HeaderView(this.model.state);
-    this.root.replaceChild(header.element, this.header.element);
-    this.header = header;
-    this.header.backButtonHandler = this.showModalConfirm;
+    this.back.backButtonHandler = this.showModalConfirm;
+
+    const timer = new TimerView(this.model.state);
+    this.header.replaceChild(timer.element, this.timer.element);
+    this.timer = timer;
+    this.timer.countdown();
+    const lives = new LivesView(this.model.state.lives);
+    this.header.replaceChild(lives.element, this.lives.element);
+    this.lives = lives;
   }
 
   updateContent() {
     const content = this.game;
     this.root.replaceChild(content.element, this.content.element);
     this.content = content;
+
+    const lives = new LivesView(this.model.state.lives);
+    this.header.replaceChild(lives.element, this.lives.element);
+    this.lives = lives;
   }
 
   updateGame() {
@@ -84,7 +102,7 @@ export default class GameController extends Controller {
     return this.model.isGameOver() ? this.changeView(this.getResults()) : this.updateGame();
   }
 
-  getStats() {
+  getResults() {
     const {lives, answers} = this.model.state;
     const results = scoring(answers, lives);
     results.answers = answers;

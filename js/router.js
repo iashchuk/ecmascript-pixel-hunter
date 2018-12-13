@@ -57,8 +57,8 @@ export default class Router {
     modal.init();
   }
 
-  static showModalError() {
-    const modal = new ModalErrorController();
+  static showModalError(error) {
+    const modal = new ModalErrorController(error);
     modal.init();
   }
 }
