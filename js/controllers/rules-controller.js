@@ -22,7 +22,7 @@ export default class RulesController extends Controller {
 
   init() {
     this.back.backButtonHandler = this.showGreeting;
-    this.content.rulesButtonHandler = this.changeView;
+    this.content.rulesButtonHandler = (player) => this.changeView(player);
     this.render(this.root);
   }
 }
