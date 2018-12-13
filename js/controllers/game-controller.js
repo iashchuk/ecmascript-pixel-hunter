@@ -5,6 +5,8 @@ import ChooseGameView from '../views/choose-game-view';
 import TinderGameView from '../views/tinder-game-view';
 import FooterView from '../views/footer-view';
 import createAnswer from '../logic/create-answer';
+import scoring from '../logic/scoring';
+
 
 const ONE_SECOND = 1000;
 
@@ -79,7 +81,14 @@ export default class GameController extends Controller {
 
   changeLevel() {
     this.model.nextLevel();
-    return this.model.isGameOver() ? this.changeView() : this.updateGame();
+    return this.model.isGameOver() ? this.changeView(this.getResults()) : this.updateGame();
+  }
+
+  getStats() {
+    const {lives, answers} = this.model.state;
+    const results = scoring(answers, lives);
+    results.answers = answers;
+    return results;
   }
 
   answerHandler(result) {
