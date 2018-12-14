@@ -13,6 +13,10 @@ export default class IntroController extends Controller {
     this.root.appendChild(this.footer.element);
   }
 
+  animate() {
+    this.content.animate();
+  }
+
   changeView() {}
 
   init() {

@@ -8,14 +8,17 @@ import ModalConfirmController from './controllers/modal-confirm-controller';
 import ModalErrorController from './controllers/modal-error-controller';
 import Loader from './data/loader';
 
+const ANIMATION_TIME = 2200;
+
 export default class Router {
 
   static showIntro() {
     Loader.loadData()
       .then((data) => (this.games = data))
+      .then(() => (intro.animate()))
+      .then(() => (setTimeout(() => this.showGreeting(), ANIMATION_TIME)))
       .catch(this.showModalError);
     const intro = new IntroController();
-    intro.changeView = () => this.showGreeting();
     intro.init();
   }
 
@@ -23,6 +26,7 @@ export default class Router {
     const greeting = new GreetingController();
     greeting.changeView = () => this.showRules();
     greeting.init();
+    greeting.animate();
   }
 
   static showRules() {
