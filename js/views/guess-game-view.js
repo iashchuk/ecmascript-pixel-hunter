@@ -2,6 +2,7 @@ import AbstractView from './abstract-view';
 import indicators from './components/indicators-component';
 import {resizeImages} from '../data/resize';
 import {ImagesType} from '../logic/config';
+import {DEBUG} from '../logic/config';
 
 export default class GuessGameView extends AbstractView {
   constructor(state, game) {
@@ -18,6 +19,7 @@ export default class GuessGameView extends AbstractView {
             <form class="game__content game__content--triple">
             ${this.game.params.map((param) => `
             <div class="game__option">
+              ${DEBUG ? `<span class="debug">${param.type}</span>` : ``}
               <img src="${param.src}" data-type="${param.type}" tabindex="0" alt="Option 1" width="304" height="455">
             </div>`).join(``)}
             </form>

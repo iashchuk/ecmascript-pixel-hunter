@@ -1,3 +1,5 @@
+const DEBUG = true;
+
 const INITIAL_STATE = {
   level: 0,
   games: 10,
@@ -35,4 +37,4 @@ const getDefaultState = () => {
 };
 
 
-export {INITIAL_STATE, AnswerScore, AnswerTime, ImagesType, getDefaultState};
+export {DEBUG, INITIAL_STATE, AnswerScore, AnswerTime, ImagesType, getDefaultState};
