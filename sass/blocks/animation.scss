@@ -4,7 +4,7 @@
   }
 }
 
-.flicker {
+.blink {
   color: red;
   animation-name: blink;
   animation-timing-function: linear;
@@ -12,6 +12,66 @@
   animation-iteration-count: infinite;
 }
 
-.flicker--add {
+.blink--fast {
   animation-duration: 0.3s;
+}
+
+
+@keyframes download {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.intro__asterisk--animate {
+  display: inline-block;
+  vertical-align: middle;
+  width: 86px;
+  height: 86px;
+  font-size: 172px;
+  line-height: 134px;
+
+  animation-name: download;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.intro--animate {
+  animation: fadeOut 3s ease;
+  animation-fill-mode: forwards;
+}
+
+
+.greeting {
+  opacity: 0;
+}
+
+.greeting--animate {
+  animation: fadeIn 2s ease;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }

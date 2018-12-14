@@ -16,10 +16,10 @@ export default class Timer extends AbstractView {
 
   countdown() {
     if (this.time < TimeType.DANGER) {
-      this.element.classList.add(`flicker`);
+      this.element.classList.add(`blink`);
     }
     if (this.time < TimeType.CRITICAL) {
-      this.element.classList.add(`flicker--add`);
+      this.element.classList.add(`blink--fast`);
     }
   }
 }
