@@ -15,7 +15,7 @@ export default class ChooseGameView extends AbstractView {
     return `
       <section class="game">
             <p class="game__task">${this.game.description}</p>
-            <form class="game__content game__content--choose">
+            <form class="game__content">
               ${this.game.params.map((param) => `
                 <div class="game__option" data-type="${param.type}" data-item="${param.index}">
                   ${DEBUG ? `<span class="debug">${param.type}</span>` : ``};

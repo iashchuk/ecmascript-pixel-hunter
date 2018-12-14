@@ -9,7 +9,6 @@ export default class GuessGameView extends AbstractView {
     super();
     this.state = state;
     this.game = game;
-    ([this.params] = this.game.params);
   }
 
   get template() {
