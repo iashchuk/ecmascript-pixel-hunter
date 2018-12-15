@@ -28,7 +28,7 @@ export default class GuessGameView extends AbstractView {
   }
 
   bind() {
-    const ENTER_KEYCODE = 27;
+    const ENTER_KEYCODE = 13;
     const gameContent = this.element.querySelector(`.game__content`);
 
     const getAnswer = () => {
@@ -43,13 +43,14 @@ export default class GuessGameView extends AbstractView {
     const answerKeyDownHandler = (evt) => {
       if (evt.keyCode === ENTER_KEYCODE) {
         answerElementHandler(evt);
+        document.removeEventListener(`keydown`, answerKeyDownHandler);
       }
     };
 
     resizeImages(gameContent);
 
     gameContent.addEventListener(`click`, answerElementHandler);
-    gameContent.addEventListener(`keydown`, answerKeyDownHandler);
+    document.addEventListener(`keydown`, answerKeyDownHandler);
   }
 
   answerHandler() {}
