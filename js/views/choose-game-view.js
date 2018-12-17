@@ -58,8 +58,7 @@ export default class ChooseGameView extends AbstractView {
         });
       });
 
-      const answerOne = answers[0];
-      const answerTwo = answers[1];
+      const [answerOne, answerTwo] = answers;
 
       if (answers.length === QUESTIONS) {
         this.answerHandler(answerOne && answerTwo);
