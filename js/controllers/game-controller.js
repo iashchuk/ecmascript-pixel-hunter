@@ -1,5 +1,4 @@
 import Controller from './controller';
-// import HeaderView from '../views/header-view';
 import GuessGameView from '../views/guess-game-view';
 import ChooseGameView from '../views/choose-game-view';
 import TinderGameView from '../views/tinder-game-view';
@@ -50,7 +49,7 @@ export default class GameController extends Controller {
     return game;
   }
 
-  updateHeader() {
+  _updateHeader() {
     this.back.backButtonHandler = this.showModalConfirm;
 
     const timer = new TimerView(this.model.state);
@@ -62,7 +61,7 @@ export default class GameController extends Controller {
     this.lives = lives;
   }
 
-  updateContent() {
+  _updateContent() {
     const content = this.game;
     this.root.replaceChild(content.element, this.content.element);
     this.content = content;
@@ -72,37 +71,37 @@ export default class GameController extends Controller {
     this.lives = lives;
   }
 
-  updateGame() {
+  _updateGame() {
     this.model.updateTimer();
-    this.updateHeader();
-    this.updateContent();
-    this.initTimer();
+    this._updateHeader();
+    this._updateContent();
+    this._initTimer();
   }
 
-  initTimer() {
+  _initTimer() {
     this._timer = setInterval(() => {
       this.model.tick();
-      this.timeEndHandler();
-      this.updateHeader();
+      this._timeEndHandler();
+      this._updateHeader();
     }, ONE_SECOND);
   }
 
-  stopTimer() {
+  _stopTimer() {
     clearInterval(this._timer);
   }
 
-  timeEndHandler() {
+  _timeEndHandler() {
     if (!this.model.state.time) {
       this.answerHandler();
     }
   }
 
-  changeLevel() {
+  _changeLevel() {
     this.model.nextLevel();
-    return this.model.isGameOver() ? this.changeView(this.getResults()) : this.updateGame();
+    return this.model.isGameOver() ? this.changeView(this._getResults()) : this._updateGame();
   }
 
-  getResults() {
+  _getResults() {
     const {lives, answers} = this.model.state;
     const results = scoring(answers, lives);
     results.answers = answers;
@@ -110,16 +109,16 @@ export default class GameController extends Controller {
   }
 
   answerHandler(result) {
-    this.stopTimer();
+    this._stopTimer();
     const answer = createAnswer(result, this.model.state.time);
     this.model.changeLives(answer);
     this.model.state.answers.push(answer);
-    this.changeLevel();
+    this._changeLevel();
   }
 
   init() {
     this.render(this.root);
-    this.initTimer();
+    this._initTimer();
   }
 
   changeView() {}
