@@ -21,6 +21,11 @@ const AnswerTime = {
   SLOW: 20
 };
 
+const AnswersType = {
+  painting: `painting`,
+  photo: `photo`
+};
+
 const ImagesType = {
   painting: `рисунок`,
   photo: `фото`
@@ -37,4 +42,4 @@ const getDefaultState = () => {
 };
 
 
-export {DEBUG, INITIAL_STATE, AnswerScore, AnswerTime, ImagesType, getDefaultState};
+export {DEBUG, INITIAL_STATE, AnswerScore, AnswerTime, AnswersType, ImagesType, getDefaultState};
