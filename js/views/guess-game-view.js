@@ -1,7 +1,7 @@
 import AbstractView from './abstract-view';
 import indicators from './components/indicators-component';
 import {resizeImages} from '../data/resize';
-import {ImagesType} from '../logic/config';
+import {AnswersType, ImagesType} from '../logic/config';
 import {DEBUG} from '../logic/config';
 
 export default class GuessGameView extends AbstractView {
@@ -32,12 +32,11 @@ export default class GuessGameView extends AbstractView {
     const gameContent = this.element.querySelector(`.game__content`);
 
     const getAnswer = () => {
-      return (this.game.description.includes(ImagesType.photo)) ? `photo` : `painting`;
+      return (this.game.description.includes(ImagesType.photo)) ? AnswersType.photo : AnswersType.painting;
     };
 
     const answerElementHandler = (evt) => {
-      let result = (evt.target.dataset.type === getAnswer());
-      this.answerHandler(result);
+      this.answerHandler(evt.target.dataset.type === getAnswer());
     };
 
     const answerKeyDownHandler = (evt) => {
