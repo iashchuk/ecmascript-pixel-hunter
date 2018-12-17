@@ -64,7 +64,8 @@ gulp.task(`scripts`, () => {
           exclude: `node_modules/**`,
           presets: [`@babel/env`]
         })
-      ]
+      ],
+      cache: false
     }, `iife`))
     .pipe(uglify())
     .pipe(sourcemaps.write(``))
