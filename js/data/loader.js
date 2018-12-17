@@ -12,9 +12,8 @@ const StatusCode = {
 const checkStatus = (response) => {
   if (response.status >= StatusCode.SUCCESS && response.status < StatusCode.REDIRECTION) {
     return response;
-  } else {
-    throw new Error(`${response.status}: ${response.statusText}`);
   }
+  throw new Error(`${response.status}: ${response.statusText}`);
 };
 
 const toJSON = (response) => response.json();
