@@ -13,16 +13,16 @@ const ANIMATION_TIME = 1500;
 
 export default class Router {
 
-  static showIntro() {
+  static async showIntro() {
     const intro = new IntroController();
-
-    Loader.loadData()
-      .then((data) => (this.games = data))
-      .then(() => (setTimeout(() => intro.animate(), ANIMATION_TIME)))
-      .catch(this.showModalError);
-
     intro.changeView = () => this.showRules();
     intro.init();
+    try {
+      this.games = await Loader.loadData();
+      setTimeout(() => intro.animate(), ANIMATION_TIME);
+    } catch (error) {
+      this.showModalError(error);
+    }
   }
 
 
@@ -40,15 +40,16 @@ export default class Router {
     rules.init();
   }
 
-  static showStats(results, player) {
-    Loader.saveResults(results, player)
-      .then(() => Loader.loadResults(player))
-      .then((data) => {
-        const stats = new StatsController(data);
-        stats.showGreeting = () => this.showGreeting();
-        stats.init();
-      })
-      .catch(this.showModalError);
+  static async showStats(results, player) {
+    try {
+      await Loader.saveResults(results, player);
+      const data = await Loader.loadResults(player);
+      const stats = new StatsController(data);
+      stats.showGreeting = () => this.showGreeting();
+      stats.init();
+    } catch (error) {
+      this.showModalError(error);
+    }
   }
 
   static showGame(player) {
