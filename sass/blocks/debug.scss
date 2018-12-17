@@ -1,0 +1,15 @@
+.game__option {
+  position: relative;
+}
+
+.debug {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: red;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}

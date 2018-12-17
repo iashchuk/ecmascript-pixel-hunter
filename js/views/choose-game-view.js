@@ -1,6 +1,7 @@
 import AbstractView from './abstract-view';
 import indicators from './components/indicators-component';
-import {resizeImages} from '../data/resize.js';
+import {resizeImages} from '../data/resize';
+import {DEBUG} from '../logic/config';
 
 
 export default class ChooseGameView extends AbstractView {
@@ -17,6 +18,7 @@ export default class ChooseGameView extends AbstractView {
             <form class="game__content">
               ${this.game.params.map((param) => `
                 <div class="game__option" data-type="${param.type}" data-item="${param.index}">
+                  ${DEBUG ? `<span class="debug">${param.type}</span>` : ``};
                   <img src="${param.src}" alt="Option ${param.index}" width="468" height="458">
                   <label class="game__answer  game__answer--photo">
                     <input class="visually-hidden" name="question${param.index}" type="radio" value="photo">

@@ -30,6 +30,11 @@ export default class GreetingView extends AbstractView {
     `;
   }
 
+  animate() {
+    const greeting = this.element.querySelector(`.greeting`);
+    greeting.classList.add(`greeting--animate`);
+  }
+
   bind() {
     const continueButton = this.element.querySelector(`.greeting__continue`);
     continueButton.addEventListener(`click`, () => this.continueButtonHandler());

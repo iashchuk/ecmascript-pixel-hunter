@@ -8,40 +8,54 @@ import ModalConfirmController from './controllers/modal-confirm-controller';
 import ModalErrorController from './controllers/modal-error-controller';
 import Loader from './data/loader';
 
+const ANIMATION_TIME = 1500;
+
+
 export default class Router {
 
-  static showIntro() {
-    Loader.loadData()
-      .then((data) => (this.games = data))
-      .catch(this.showModalError);
+  static async showIntro() {
     const intro = new IntroController();
-    intro.changeView = () => this.showGreeting();
+    intro.changeView = () => this.showRules();
     intro.init();
+    try {
+      this.games = await Loader.loadData();
+      setTimeout(() => intro.animate(), ANIMATION_TIME);
+    } catch (error) {
+      this.showModalError(error);
+    }
   }
+
 
   static showGreeting() {
     const greeting = new GreetingController();
     greeting.changeView = () => this.showRules();
     greeting.init();
+    greeting.animate();
   }
 
   static showRules() {
     const rules = new RulesController();
     rules.showGreeting = () => this.showGreeting();
-    rules.changeView = () => this.showGame();
+    rules.changeView = (player) => this.showGame(player);
     rules.init();
   }
 
-  static showStats(state) {
-    const stats = new StatsController(state);
-    stats.showGreeting = () => this.showGreeting();
-    stats.init();
+  static async showStats(results, player) {
+    try {
+      await Loader.saveResults(results, player);
+      const data = await Loader.loadResults(player);
+      const stats = new StatsController(data);
+      stats.showGreeting = () => this.showGreeting();
+      stats.init();
+    } catch (error) {
+      this.showModalError(error);
+    }
   }
 
-  static showGame() {
-    const model = new GameModel(this.games);
+  static showGame(player) {
+    const model = new GameModel(this.games, player);
     const game = new GameController(model);
-    game.changeView = () => this.showStats(model.state);
+    game.changeView = (results) => this.showStats(results, player);
     game.showModalConfirm = () => this.showModalConfirm();
     game.init();
   }
@@ -52,8 +66,8 @@ export default class Router {
     modal.init();
   }
 
-  static showModalError() {
-    const modal = new ModalErrorController();
+  static showModalError(error) {
+    const modal = new ModalErrorController(error);
     modal.init();
   }
 }

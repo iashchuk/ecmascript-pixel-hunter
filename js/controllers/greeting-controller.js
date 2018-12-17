@@ -14,6 +14,10 @@ export default class GreetingController extends Controller {
     this.root.appendChild(this.footer.element);
   }
 
+  animate() {
+    this.content.animate();
+  }
+
   changeView() {}
 
   init() {

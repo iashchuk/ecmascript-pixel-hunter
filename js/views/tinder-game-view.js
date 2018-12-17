@@ -1,6 +1,7 @@
 import AbstractView from './abstract-view';
 import indicators from './components/indicators-component';
-import {resizeImages} from '../data/resize.js';
+import {resizeImages} from '../data/resize';
+import {DEBUG} from '../logic/config';
 
 
 export default class TinderGameView extends AbstractView {
@@ -18,6 +19,7 @@ export default class TinderGameView extends AbstractView {
         <p class="game__task">${this.game.description}</p>
         <form class="game__content game__content--wide">
           <div class="game__option" data-type="${this.params.type}" data-number="${this.params.index}">
+            ${DEBUG ? `<span class="debug">${this.params.type}</span>` : ``};
             <img src="${this.params.src}" alt="Option ${this.params.index}" width="705" height="455">
             <label class="game__answer  game__answer--photo">
               <input class="visually-hidden" name="question${this.params.index}" type="radio" value="photo">

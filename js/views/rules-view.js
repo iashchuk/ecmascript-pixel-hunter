@@ -33,7 +33,7 @@ export default class RulesView extends AbstractView {
     const rulesInputHandler = () => (rulesButton.disabled = !rulesInput.value);
 
     rulesInput.addEventListener(`input`, rulesInputHandler);
-    rulesButton.addEventListener(`click`, () => this.rulesButtonHandler());
+    rulesButton.addEventListener(`click`, () => this.rulesButtonHandler(rulesInput.value));
 
   }
 

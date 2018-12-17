@@ -5,10 +5,12 @@ import Controller from './controller';
 
 
 export default class StatsController extends Controller {
-  constructor(state) {
+  constructor(results) {
     super();
+    this.results = results;
+
     this.back = new BackView();
-    this.content = new StatsView(state);
+    this.content = new StatsView(this.results);
     this.footer = new FooterView();
 
     this.root = document.createElement(`div`);

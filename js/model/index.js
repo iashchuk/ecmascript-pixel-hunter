@@ -1,9 +1,9 @@
 import {getDefaultState, INITIAL_STATE} from '../logic/config';
 
-
 export default class GameModel {
-  constructor(games) {
+  constructor(games, player) {
     this.games = games;
+    this.player = player;
     this.restart();
   }
 
