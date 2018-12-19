@@ -8,6 +8,8 @@ const INITIAL_STATE = {
   answers: []
 };
 
+const MIN_QUNATITY_LIVES = 0;
+
 const AnswerScore = {
   WRONG: 0,
   SLOW: -50,
@@ -31,6 +33,12 @@ const ImagesType = {
   photo: `фото`
 };
 
+const StatsMessages = {
+  win: `Победа`,
+  lose: `Поражение`,
+  fail: `FAIL`
+};
+
 const getDefaultState = () => {
   return {
     level: 0,
@@ -42,4 +50,4 @@ const getDefaultState = () => {
 };
 
 
-export {DEBUG, INITIAL_STATE, AnswerScore, AnswerTime, AnswersType, ImagesType, getDefaultState};
+export {DEBUG, INITIAL_STATE, MIN_QUNATITY_LIVES, AnswerScore, AnswerTime, AnswersType, ImagesType, getDefaultState, StatsMessages};

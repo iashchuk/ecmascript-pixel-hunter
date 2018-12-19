@@ -1,5 +1,6 @@
 import AbstractView from './abstract-view';
 
+const ESC_KEYCODE = 27;
 
 export default class ModalConfirmView extends AbstractView {
   constructor() {
@@ -25,7 +26,6 @@ export default class ModalConfirmView extends AbstractView {
   }
 
   bind() {
-    const ESC_KEYCODE = 27;
     const buttonConfirm = this.element.querySelector(`.modal__btn--confirm`);
     const buttonCancel = this.element.querySelector(`.modal__btn--cancel`);
     const buttonClose = this.element.querySelector(`.modal__close`);

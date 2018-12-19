@@ -1,6 +1,6 @@
 import AbstractView from './abstract-view';
 
-export default class Lives extends AbstractView {
+export default class LivesView extends AbstractView {
   constructor(lives) {
     super();
     this.lives = lives;

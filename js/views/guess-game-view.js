@@ -1,8 +1,10 @@
 import AbstractView from './abstract-view';
 import indicators from './components/indicators-component';
-import {resizeImages} from '../data/resize';
-import {AnswersType, ImagesType} from '../logic/config';
-import {DEBUG} from '../logic/config';
+import resize from '../data/resize';
+import {DEBUG, AnswersType, ImagesType} from '../logic/config';
+
+
+const ENTER_KEYCODE = 13;
 
 export default class GuessGameView extends AbstractView {
   constructor(state, game) {
@@ -11,15 +13,45 @@ export default class GuessGameView extends AbstractView {
     this.game = game;
   }
 
+  get images() {
+    const images = [];
+    this.game.params.map((param) => {
+      const image = new Image();
+      image.src = param.src;
+
+      const frame = {
+        width: param.width,
+        height: param.height
+      };
+
+      const given = {
+        width: image.naturalWidth,
+        height: image.naturalHeight
+      };
+
+      const newSize = resize(frame, given);
+
+      image.type = param.type;
+      image.index = param.index;
+      image.width = newSize.width;
+      image.height = newSize.height;
+
+      images.push(image);
+
+    });
+
+    return images;
+  }
+
   get template() {
     return `
       <section class="game">
             <p class="game__task">${this.game.description}</p>
             <form class="game__content game__content--triple">
-            ${this.game.params.map((param) => `
+            ${this.game.params.map((param, index) => `
             <div class="game__option">
               ${DEBUG ? `<span class="debug">${param.type}</span>` : ``}
-              <img src="${param.src}" data-type="${param.type}" tabindex="0" alt="Option 1" width="304" height="455">
+              <img src="${this.images[index].src}" data-type="${this.images[index].type}" alt="Option ${index}" width="${this.images[index].width}" height="${this.images[index].height}">
             </div>`).join(``)}
             </form>
             ${indicators(this.state.answers)}
@@ -28,7 +60,6 @@ export default class GuessGameView extends AbstractView {
   }
 
   bind() {
-    const ENTER_KEYCODE = 13;
     const gameContent = this.element.querySelector(`.game__content`);
 
     const getAnswer = () => {
@@ -45,8 +76,6 @@ export default class GuessGameView extends AbstractView {
         document.removeEventListener(`keydown`, answerKeyDownHandler);
       }
     };
-
-    resizeImages(gameContent);
 
     gameContent.addEventListener(`click`, answerElementHandler);
     document.addEventListener(`keydown`, answerKeyDownHandler);

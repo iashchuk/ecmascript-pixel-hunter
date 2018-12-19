@@ -5,7 +5,7 @@ const TimeType = {
   CRITICAL: 3
 };
 
-export default class Timer extends AbstractView {
+export default class TimerView extends AbstractView {
   constructor(state) {
     super();
     this.time = state.time;
