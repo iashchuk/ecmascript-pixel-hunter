@@ -3,7 +3,7 @@ import adaptServerData from './adapter';
 
 const SERVER_URL = `https://es.dump.academy/pixel-hunter`;
 const DEFAULT_NAME = `Marty McFly JS`;
-const APP_ID = 12122018;
+const APP_ID = 19122018;
 
 const StatusCode = {
   SUCCESS: 200,
