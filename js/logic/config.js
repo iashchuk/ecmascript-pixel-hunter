@@ -33,6 +33,12 @@ const ImagesType = {
   photo: `фото`
 };
 
+const StatsMessages = {
+  win: `Победа`,
+  lose: `Поражение`,
+  fail: `FAIL`
+};
+
 const getDefaultState = () => {
   return {
     level: 0,
@@ -44,4 +50,4 @@ const getDefaultState = () => {
 };
 
 
-export {DEBUG, INITIAL_STATE, MIN_QUNATITY_LIVES, AnswerScore, AnswerTime, AnswersType, ImagesType, getDefaultState};
+export {DEBUG, INITIAL_STATE, MIN_QUNATITY_LIVES, AnswerScore, AnswerTime, AnswersType, ImagesType, getDefaultState, StatsMessages};
