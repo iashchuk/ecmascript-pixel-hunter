@@ -8,6 +8,7 @@ import ModalConfirmController from './controllers/modal-confirm-controller';
 import ModalErrorController from './controllers/modal-error-controller';
 import Loader from './data/loader';
 
+
 const ANIMATION_TIME = 1500;
 
 
@@ -19,6 +20,7 @@ export default class Router {
     intro.init();
     try {
       this.games = await Loader.loadData();
+      this.images = await Loader.loadImages(this.games);
       setTimeout(() => intro.animate(), ANIMATION_TIME);
     } catch (error) {
       this.showModalError(error);
