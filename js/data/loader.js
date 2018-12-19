@@ -1,5 +1,6 @@
 import adaptServerData from './adapter';
 
+
 const SERVER_URL = `https://es.dump.academy/pixel-hunter`;
 const DEFAULT_NAME = `Marty McFly JS`;
 const APP_ID = 12122018;
@@ -18,6 +19,16 @@ const checkStatus = (response) => {
 
 const toJSON = (response) => response.json();
 
+const loadImage = (url) => {
+  return new Promise((resolve, reject) => {
+    const image = new Image();
+    image.onload = () => resolve(image);
+    image.onerror = () => reject(`Не удалось загрузить изображение: ${url}`);
+    image.src = url;
+  });
+};
+
+
 export default class Loader {
 
   static async loadData() {
@@ -25,6 +36,17 @@ export default class Loader {
     const responseData = await toJSON(response);
     return adaptServerData(responseData);
   }
+
+  static loadImages(games) {
+    const images = [];
+    games.forEach((question) => {
+      question.params.forEach((param) => {
+        images.push(loadImage(param.src));
+      });
+    });
+    return Promise.all(images);
+  }
+
 
   static async loadResults(name = DEFAULT_NAME) {
     const response = await fetch(`${SERVER_URL}/stats/${APP_ID}-${name}`);
