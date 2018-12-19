@@ -1,4 +1,4 @@
-import {AnswerScore} from './config';
+import {MIN_QUNATITY_LIVES, AnswerScore} from './config';
 
 export default (answers, lives) => {
   return {
@@ -28,7 +28,7 @@ export default (answers, lives) => {
     },
     lives: {
       get count() {
-        return lives;
+        return lives >= MIN_QUNATITY_LIVES ? lives : MIN_QUNATITY_LIVES;
       },
       get points() {
         return this.count * AnswerScore.BONUS;
