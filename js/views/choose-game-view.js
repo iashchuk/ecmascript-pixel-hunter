@@ -1,25 +1,57 @@
 import AbstractView from './abstract-view';
 import indicators from './components/indicators-component';
-import {resizeImages} from '../data/resize';
+import resize from '../data/resize';
 import {DEBUG} from '../logic/config';
 
+
+const QUESTIONS = 2;
 
 export default class ChooseGameView extends AbstractView {
   constructor(state, game) {
     super();
     this.state = state;
     this.game = game;
-    ([this.params] = this.game.params);
   }
+
+  get images() {
+    const images = [];
+    this.game.params.map((param) => {
+      const image = new Image();
+      image.src = param.src;
+
+      const frame = {
+        width: param.width,
+        height: param.height
+      };
+
+      const given = {
+        width: image.naturalWidth,
+        height: image.naturalHeight
+      };
+
+      const newSize = resize(frame, given);
+
+      image.type = param.type;
+      image.width = newSize.width;
+      image.height = newSize.height;
+
+      images.push(image);
+
+    });
+    return images;
+  }
+
+
   get template() {
+
     return `
       <section class="game">
             <p class="game__task">${this.game.description}</p>
             <form class="game__content">
-              ${this.game.params.map((param) => `
+              ${this.game.params.map((param, index) => `
                 <div class="game__option" data-type="${param.type}" data-item="${param.index}">
                   ${DEBUG ? `<span class="debug">${param.type}</span>` : ``};
-                  <img src="${param.src}" alt="Option ${param.index}" width="468" height="458">
+                  <img src="${this.images[index].src}" alt="Option ${index}" width="${this.images[index].width}" height="${this.images[index].height}">
                   <label class="game__answer  game__answer--photo">
                     <input class="visually-hidden" name="question${param.index}" type="radio" value="photo">
                     <span>Фото</span>
@@ -38,16 +70,11 @@ export default class ChooseGameView extends AbstractView {
 
 
   bind() {
-    const QUESTIONS = 2;
     const gameContent = this.element.querySelector(`.game__content`);
     const gameOptions = this.element.querySelectorAll(`.game__option`);
 
-    resizeImages(gameContent);
-
     gameContent.addEventListener(`change`, () => {
-
       const answers = [];
-
       gameOptions.forEach((option) => {
         const inputs = option.querySelectorAll(`input`);
 
