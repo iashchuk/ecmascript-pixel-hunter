@@ -1,6 +1,6 @@
 import AbstractView from './abstract-view';
 import indicators from './components/indicators-component';
-import resize from '../data/resize';
+import getPreloadImages from '../data/preolad-images';
 import {DEBUG} from '../logic/config';
 
 
@@ -14,36 +14,10 @@ export default class ChooseGameView extends AbstractView {
   }
 
   get images() {
-    const images = [];
-    this.game.params.map((param) => {
-      const image = new Image();
-      image.src = param.src;
-
-      const frame = {
-        width: param.width,
-        height: param.height
-      };
-
-      const given = {
-        width: image.naturalWidth,
-        height: image.naturalHeight
-      };
-
-      const newSize = resize(frame, given);
-
-      image.type = param.type;
-      image.width = newSize.width;
-      image.height = newSize.height;
-
-      images.push(image);
-
-    });
-    return images;
+    return getPreloadImages(this.game);
   }
 
-
   get template() {
-
     return `
       <section class="game">
             <p class="game__task">${this.game.description}</p>

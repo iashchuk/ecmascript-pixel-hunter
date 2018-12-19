@@ -34,6 +34,9 @@ export default (answers, lives) => {
         return this.count * AnswerScore.BONUS;
       }
     },
+    get isWin() {
+      return lives >= MIN_QUNATITY_LIVES;
+    },
     get total() {
       return this.normal.points + this.fast.points + this.slow.points + this.lives.points;
     }
