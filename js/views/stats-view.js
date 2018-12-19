@@ -1,5 +1,6 @@
 import AbstractView from './abstract-view';
 import indicators from './components/indicators-component';
+import {MIN_QUNATITY_LIVES} from '../logic/config';
 
 export default class StatsView extends AbstractView {
   constructor(results) {
@@ -10,7 +11,7 @@ export default class StatsView extends AbstractView {
   get template() {
     const getResultTable = (result, index) => {
       return `
-        <h1>${result.lives.count ? `Победа` : `Поражение`}</h1>
+        <h1>${result.lives.count >= MIN_QUNATITY_LIVES ? `Победа` : `Поражение`}</h1>
         <table class="result__table">
           <tr>
             <td class="result__number">${index + 1}.</td>
@@ -46,7 +47,7 @@ export default class StatsView extends AbstractView {
             <td class="result__total">${result.slow.points}</td>
           </tr>
           <tr>
-            <td colspan="5" class="result__total  result__total--final">${result.lives.count ? result.total : `FAIL`}
+            <td colspan="5" class="result__total  result__total--final">${result.lives.count >= MIN_QUNATITY_LIVES ? result.total : `FAIL`}
             </td>
           </tr>
         </table>

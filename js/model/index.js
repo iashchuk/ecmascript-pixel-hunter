@@ -1,4 +1,4 @@
-import {getDefaultState, INITIAL_STATE} from '../logic/config';
+import {INITIAL_STATE, MIN_QUNATITY_LIVES, getDefaultState} from '../logic/config';
 
 export default class GameModel {
   constructor(games, player) {
@@ -22,7 +22,7 @@ export default class GameModel {
   }
 
   isGameOver() {
-    return this._state.lives <= 0 || this._state.level === INITIAL_STATE.games;
+    return this._state.lives < MIN_QUNATITY_LIVES || this._state.level === INITIAL_STATE.games;
   }
 
   nextLevel() {
