@@ -2,7 +2,7 @@ export default (serverData) => {
   const localData = [];
 
   serverData.forEach((item) => {
-    let question = {
+    const question = {
       type: item.type,
       description: item.question,
       get params() {
@@ -10,7 +10,9 @@ export default (serverData) => {
           return {
             type: answer.type,
             src: answer.image.url,
-            index: index + 1
+            index: index + 1,
+            width: answer.image.width,
+            height: answer.image.height
           };
         });
       }
