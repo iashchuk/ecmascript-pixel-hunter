@@ -38,7 +38,8 @@
     "rollup-plugin-node-resolve": "^4.0.0",
     "stylelint": "9.4.x",
     "stylelint-config-htmlacademy": "0.1.x",
-    "tsify": "^4.0.1"
+    "tsify": "^4.0.1",
+    "vinyl-source-stream": "^2.0.0"
   },
   "engines": {
     "node": "10"
