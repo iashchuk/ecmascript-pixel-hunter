@@ -7,6 +7,10 @@ import {DEBUG, AnswersType, ImagesType} from '../logic/config';
 const ENTER_KEYCODE = 13;
 
 export default class GuessGameView extends AbstractView {
+
+  state
+  game
+
   constructor(state, game) {
     super();
     this.state = state;
@@ -34,7 +38,7 @@ export default class GuessGameView extends AbstractView {
   }
 
   bind() {
-    const gameContent = this.element.querySelector(`.game__content`);
+    const gameContent: HTMLFormElement = this.element.querySelector(`.game__content`);
 
     const getAnswer = () => {
       return (this.game.description.includes(ImagesType.photo)) ? AnswersType.photo : AnswersType.painting;
@@ -55,5 +59,5 @@ export default class GuessGameView extends AbstractView {
     document.addEventListener(`keydown`, answerKeyDownHandler);
   }
 
-  answerHandler() {}
+  answerHandler(boolean) {}
 }

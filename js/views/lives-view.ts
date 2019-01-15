@@ -5,6 +5,9 @@ export default class LivesView extends AbstractView {
     super();
     this.lives = lives;
   }
+
+  lives: number
+
   get template() {
     const drawHeart = (full) => {
       return `<img src="img/heart__${full ? `full` : `empty`}.svg" class="game__heart" alt="Life" width="31" height="27">`;

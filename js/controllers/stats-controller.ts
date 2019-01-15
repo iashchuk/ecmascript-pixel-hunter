@@ -1,14 +1,23 @@
-import RulesView from '../views/rules-view';
+import StatsView from '../views/stats-view';
 import BackView from '../views/back-view';
 import FooterView from '../views/footer-view';
 import Controller from './controller';
 
 
-export default class RulesController extends Controller {
-  constructor() {
+export default class StatsController extends Controller {
+
+  results
+  back
+  content
+  footer
+  root
+
+  constructor(results) {
     super();
+    this.results = results;
+
     this.back = new BackView();
-    this.content = new RulesView();
+    this.content = new StatsView(this.results);
     this.footer = new FooterView();
 
     this.root = document.createElement(`div`);
@@ -18,11 +27,9 @@ export default class RulesController extends Controller {
   }
 
   showGreeting() {}
-  changeView() {}
 
   init() {
     this.back.backButtonHandler = this.showGreeting;
-    this.content.rulesButtonHandler = (player) => this.changeView(player);
     this.render(this.root);
   }
 }

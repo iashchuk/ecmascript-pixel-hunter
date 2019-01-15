@@ -2,6 +2,10 @@ import ModalConfirmView from '../views/modal-confirm-view';
 import Controller from './controller';
 
 export default class ModalConfirmController extends Controller {
+
+  content
+  root
+
   constructor() {
     super();
     this.content = new ModalConfirmView();

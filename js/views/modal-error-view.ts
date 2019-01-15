@@ -7,6 +7,8 @@ export default class ModalErrorView extends AbstractView {
     this.error = error;
   }
 
+  error: string
+
   get template() {
     return `
       <section class="modal">

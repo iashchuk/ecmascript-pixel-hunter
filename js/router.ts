@@ -14,6 +14,10 @@ const ANIMATION_TIME = 1500;
 
 export default class Router {
 
+  games
+  images
+  rules
+
   static async showIntro() {
     const intro = new IntroController();
     intro.changeView = () => this.showRules();

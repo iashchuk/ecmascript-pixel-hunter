@@ -13,6 +13,10 @@ export default class TinderGameView extends AbstractView {
     ([this.params] = this.game.params);
   }
 
+  state
+  game
+  params
+
 
   get images() {
     return getPreloadImages(this.game);
@@ -43,16 +47,18 @@ export default class TinderGameView extends AbstractView {
 
 
   bind() {
-    const gameContent = this.element.querySelector(`.game__content`);
-    const gameOption = this.element.querySelector(`.game__option`).dataset.type;
+    const gameContent: HTMLFormElement = this.element.querySelector(`.game__content`);
+    const gameOption: HTMLDataElement = this.element.querySelector(`.game__option`);
+    const gameType = gameOption.dataset.type;
 
     gameContent.addEventListener(`click`, () => {
-      const answer = (gameOption === gameContent.question1.value);
+      const answer = (gameType === gameContent.question1.value);
       if (gameContent.question1.value) {
         this.answerHandler(answer);
       }
     });
   }
 
-  answerHandler() {}
+
+  answerHandler(boolean) {}
 }

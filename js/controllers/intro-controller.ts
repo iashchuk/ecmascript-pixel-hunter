@@ -16,6 +16,11 @@ export default class IntroController extends Controller {
     this.root.appendChild(this.footer.element);
   }
 
+  intro
+  greeting
+  footer
+  root
+
   animate() {
     this.intro.animate();
     this.greeting.animate();

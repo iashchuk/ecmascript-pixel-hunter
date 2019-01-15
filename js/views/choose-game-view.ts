@@ -7,11 +7,16 @@ import {DEBUG} from '../logic/config';
 const QUESTIONS = 2;
 
 export default class ChooseGameView extends AbstractView {
+
+  state
+  game
+
   constructor(state, game) {
     super();
     this.state = state;
     this.game = game;
   }
+
 
   get images() {
     return getPreloadImages(this.game);
@@ -44,8 +49,8 @@ export default class ChooseGameView extends AbstractView {
 
 
   bind() {
-    const gameContent = this.element.querySelector(`.game__content`);
-    const gameOptions = this.element.querySelectorAll(`.game__option`);
+    const gameContent: HTMLFormElement = this.element.querySelector(`.game__content`);
+    const gameOptions: NodeListOf<HTMLElement> = this.element.querySelectorAll(`.game__option`);
 
     gameContent.addEventListener(`change`, () => {
       const answers = [];
@@ -67,5 +72,5 @@ export default class ChooseGameView extends AbstractView {
     });
   }
 
-  answerHandler() {}
+  answerHandler(boolean) {}
 }

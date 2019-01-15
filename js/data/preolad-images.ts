@@ -23,7 +23,9 @@ export default (game) => {
     image.width = newSize.width;
     image.height = newSize.height;
 
+
     images.push(image);
+
 
   });
 

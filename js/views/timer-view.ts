@@ -10,6 +10,9 @@ export default class TimerView extends AbstractView {
     super();
     this.time = state.time;
   }
+
+  time: number
+
   get template() {
     return `<div class="game__timer">${this.time}</div>`;
   }

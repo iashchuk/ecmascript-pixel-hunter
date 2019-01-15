@@ -14,9 +14,13 @@ const rollup = require(`gulp-better-rollup`);
 const sourcemaps = require(`gulp-sourcemaps`);
 const mocha = require(`gulp-mocha`);
 const commonjs = require(`rollup-plugin-commonjs`);
-const babel = require(`rollup-plugin-babel`);
-const nodeResolve = require(`rollup-plugin-node-resolve`);
+// const babel = require(`rollup-plugin-babel`);
+// const nodeResolve = require(`rollup-plugin-node-resolve`);
 const uglify = require(`gulp-uglify`);
+const browserify = require(`browserify`);
+const source = require(`vinyl-source-stream`);
+const tsify = require(`tsify`);
+const babelify = require(`babelify`);
 
 
 gulp.task(`style`, () => {
@@ -52,21 +56,23 @@ gulp.task(`sprite`, () => {
 });
 
 gulp.task(`scripts`, () => {
-  return gulp.src(`js/main.js`)
+  return browserify({
+    basedir: `.`,
+    debug: true,
+    entries: [`js/main.ts`],
+    cache: {},
+    packageCache: {}
+  })
+  .plugin(tsify)
+  .transform(babelify, {
+    presets: [`@babel/preset-env`],
+    extensions: [`.ts`],
+    exclude: `node_modules/**`
+  })
+  .bundle()
     .pipe(plumber())
-    .pipe(sourcemaps.init())
-    .pipe(rollup({
-      plugins: [
-        nodeResolve(),
-        commonjs(),
-        babel({
-          babelrc: false,
-          exclude: `node_modules/**`,
-          presets: [`@babel/env`]
-        })
-      ],
-      cache: false
-    }, `iife`))
+  .pipe(source(`main.js`))
+  .pipe(sourcemaps.init({loadMaps: true}))
     .pipe(uglify())
     .pipe(sourcemaps.write(``))
     .pipe(gulp.dest(`build/js`));

@@ -4,6 +4,11 @@ import Controller from './controller';
 
 
 export default class GreetingController extends Controller {
+
+  content
+  footer
+  root
+
   constructor() {
     super();
     this.content = new GreetingView();

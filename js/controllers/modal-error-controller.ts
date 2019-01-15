@@ -2,6 +2,11 @@ import ModalErrorView from '../views/modal-error-view';
 import Controller from './controller';
 
 export default class ModalErrorController extends Controller {
+
+  content
+  root
+  error
+
   constructor(error) {
     super();
     this.error = error;

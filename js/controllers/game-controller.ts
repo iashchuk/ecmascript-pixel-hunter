@@ -13,6 +13,17 @@ import TimerView from '../views/timer-view';
 const ONE_SECOND = 1000;
 
 export default class GameController extends Controller {
+
+  model
+  back
+  timer
+  content
+  lives
+  footer
+  header
+  root
+  _timer
+
   constructor(model) {
     super();
     this.model = model;

@@ -27,8 +27,8 @@ export default class RulesView extends AbstractView {
   }
 
   bind() {
-    const rulesButton = this.element.querySelector(`.rules__button`);
-    const rulesInput = this.element.querySelector(`.rules__input`);
+    const rulesButton: HTMLButtonElement = this.element.querySelector(`.rules__button`);
+    const rulesInput: HTMLInputElement = this.element.querySelector(`.rules__input`);
 
     const rulesInputHandler = () => (rulesButton.disabled = !rulesInput.value);
 
@@ -37,7 +37,7 @@ export default class RulesView extends AbstractView {
 
   }
 
-  rulesButtonHandler() {
+  rulesButtonHandler(HTMLButtonElement) {
   }
 
 }

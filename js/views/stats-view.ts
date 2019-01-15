@@ -8,6 +8,8 @@ export default class StatsView extends AbstractView {
     this.results = results.reverse();
   }
 
+  results
+
   get template() {
     const getResultTable = (result, index) => {
       return `
