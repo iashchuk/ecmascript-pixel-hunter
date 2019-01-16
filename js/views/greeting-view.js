@@ -1,4 +1,4 @@
-import AbstractView from './abstract-view';
+import AbstractView from "./abstract-view";
 
 export default class GreetingView extends AbstractView {
   constructor() {
@@ -23,7 +23,7 @@ export default class GreetingView extends AbstractView {
         <button class="greeting__continue" type="button">
           <span class="visually-hidden">Продолжить</span>
           <svg class="icon" width="64" height="64" viewBox="0 0 64 64" fill="#000000">
-            <use xlink:href="img/sprite.svg#arrow-right"></use>
+            <use xlink:href="#arrow-right"></use>
           </svg>
         </button>
       </section>
@@ -37,7 +37,9 @@ export default class GreetingView extends AbstractView {
 
   bind() {
     const continueButton = this.element.querySelector(`.greeting__continue`);
-    continueButton.addEventListener(`click`, () => this.continueButtonHandler());
+    continueButton.addEventListener(`click`, () =>
+      this.continueButtonHandler()
+    );
   }
 
   continueButtonHandler() {}

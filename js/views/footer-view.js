@@ -1,4 +1,4 @@
-import AbstractView from './abstract-view';
+import AbstractView from "./abstract-view";
 
 export default class FooterView extends AbstractView {
   constructor() {
@@ -11,7 +11,7 @@ export default class FooterView extends AbstractView {
         <a href="https://htmlacademy.ru" class="social-link">
           <span class="visually-hidden">HTML Academy</span>
           <svg class="icon" width="108" height="37" viewBox="0 0 108 37" fill="#000000">
-            <use xlink:href="img/sprite.svg#logo-htmla"></use>
+            <use xlink:href="#logo-htmla"></use>
           </svg>
         </a>
         <span class="footer__made-in">Сделано в <a href="https://htmlacademy.ru" class="footer__link">HTML Academy</a> &copy; 2018</span>
@@ -19,25 +19,25 @@ export default class FooterView extends AbstractView {
           <a href="https://twitter.com/htmlacademy_ru" class="social-link">
             <span class="visually-hidden">Твиттер</span>
             <svg class="icon" width="29" height="29" viewBox="0 0 29 29" fill="#000000">
-              <use xlink:href="img/sprite.svg#icon-tw"></use>
+              <use xlink:href="#icon-tw"></use>
             </svg>
           </a>
           <a href="https://www.instagram.com/htmlacademy/" class="social-link">
             <span class="visually-hidden">Инстаграм</span>
             <svg class="icon" width="29" height="29" viewBox="0 0 29 29" fill="#000000">
-              <use xlink:href="img/sprite.svg#icon-ig"></use>
+              <use xlink:href="#icon-ig"></use>
             </svg>
           </a>
           <a href="https://www.facebook.com/htmlacademy" class="social-link">
             <span class="visually-hidden">Фейсбук</span>
             <svg class="icon" width="29" height="29" viewBox="0 0 29 29" fill="#000000">
-              <use xlink:href="img/sprite.svg#icon-fb"></use>
+              <use xlink:href="#icon-fb"></use>
             </svg>
           </a>
           <a href="https://vk.com/htmlacademy" class="social-link">
             <span class="visually-hidden">ВКонтакте</span>
             <svg class="icon" width="29" height="29" viewBox="0 0 29 29" fill="#000000">
-              <use xlink:href="img/sprite.svg#icon-vk"></use>
+              <use xlink:href="#icon-vk"></use>
             </svg>
           </a>
         </div>

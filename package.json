@@ -42,6 +42,8 @@
     "node": "10"
   },
   "dependencies": {
-    "@babel/polyfill": "^7.0.0"
+    "@babel/polyfill": "^7.0.0",
+    "gulp-posthtml": "^3.0.4",
+    "posthtml-include": "^1.2.0"
   }
 }
