@@ -5,10 +5,6 @@
 
 ---
 
-Сертификат: https://assets.htmlacademy.ru/certificates/intensive/99/93555.pdf
-
--
-
 **Сертификат**: https://assets.htmlacademy.ru/certificates/intensive/99/93555.pdf
 
 [travis-image]: https://travis-ci.com/htmlacademy-ecmascript/93555-pixel-hunter.svg?branch=master
